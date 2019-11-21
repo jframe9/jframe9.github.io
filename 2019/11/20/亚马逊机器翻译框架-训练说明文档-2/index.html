@@ -12,8 +12,8 @@
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.iso?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.iso?v=7.3.0">
   <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
 
 <link rel="stylesheet" href="/css/main.css?v=7.3.0">
@@ -129,7 +129,7 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-        <p class="site-subtitle">稍纵即逝</p>
+        <p class="site-subtitle">Stay hungry, stay foolish</p>
       
   </div>
 
@@ -221,7 +221,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jfchen">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/timg.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -285,6 +285,25 @@
     
     
     
+    
+      <div>
+        <div id="reward-container">
+  <div></div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Jfchen 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+      </div>
 
     <footer class="post-footer">
           
@@ -350,7 +369,7 @@
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/images/avatar.gif"
+      src="/images/timg.jpg"
       alt="Jfchen">
   <p class="site-author-name" itemprop="name">Jfchen</p>
   <div class="site-description motion-element" itemprop="description"></div>
@@ -358,7 +377,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives/%20%7C%7C%20archive">
+          <a href="/archives">
         
           <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
@@ -370,7 +389,7 @@
       <div class="site-state-item site-state-categories">
         
           
-            <a href="/categories/%20%7C%7C%20th">
+            <a href="/categories">
           
         
         
@@ -389,7 +408,7 @@
       <div class="site-state-item site-state-tags">
         
           
-            <a href="/tags/%20%7C%7C%20tags">
+            <a href="/tags">
           
         
         
@@ -419,7 +438,7 @@
       
         
       
-        <a href=https://github.com/yourname title="GitHub → https://github.com/yourname" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href=https://github.com/jframe9 title="GitHub → https://github.com/jframe9" target="_blank" style="text-align:center"><i class="fa fa-fw fa-github"></i> GitHub</a>
       </span>
     
       <span class="links-of-author-item">
@@ -430,12 +449,24 @@
       
         
       
-        <a href=mailto:yourname@gmail.com title="E-Mail → mailto:yourname@gmail.com" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href=mailto:893713591@qq.com title="E-Mail → mailto:893713591@qq.com" target="_blank" style="text-align:center"><i class="fa fa-fw fa-envelope"></i> E-Mail</a>
       </span>
     
   </div>
 
 
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://blog.zhaoxu.ml/" title="http:&#x2F;&#x2F;blog.zhaoxu.ml" rel="noopener" target="_blank">赵儿</a>
+        </li>
+      
+    </ul>
+  </div>
 
         </div>
       </div>
@@ -497,6 +528,10 @@
   </div>
 
   
+    
+    
+  
+  <script color='0,0,255' opacity='0.7' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/jquery/index.js?v=3.4.1"></script>
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
@@ -529,6 +564,53 @@
 
 
 
+
+  
+    
+      <script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
 
 
 
