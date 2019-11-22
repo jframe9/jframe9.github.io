@@ -213,6 +213,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/22/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jfchen">
+      <meta itemprop="description" content="fighing gank">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jfchen's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/11/22/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/" class="post-title-link" itemprop="url">亚马逊机器翻译框架-训练说明文档(0)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-22 09:27:10 / 修改时间：09:58:00" itemprop="dateCreated datePublished" datetime="2019-11-22T09:27:10+08:00">2019-11-22</time>
+            </span>
+          
+            
+
+            
+          
+
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h3 id="Setup-amp-Installation"><a href="#Setup-amp-Installation" class="headerlink" title="Setup &amp; Installation"></a>Setup &amp; Installation</h3><h4 id="依存关系"><a href="#依存关系" class="headerlink" title="依存关系"></a>依存关系</h4><p><code>Sockeye</code>所需要的环境：</p>
+<ul>
+<li><strong>Python3</strong></li>
+<li>MXNet</li>
+<li>numpy</li>
+</ul>
+<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>下面有几个有关<code>Sockeye</code>和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。</p>
+<p>-&gt; <strong>via pip</strong></p>
+<p>最简单的方式是使用pip:</p>
+<blockquote>
+<p>pip install sockeye</p>
+</blockquote>
+<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
+<blockquote>
+<p> wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
+<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<p>-&gt; <strong>via source…</strong></p>
+<p>如果你只想使用sockeye而不扩展它，只需通过安装它即可：</p>
+<blockquote>
+<p>pip install -r requirements/requirements.txt</p>
+<p>pip install .</p>
+</blockquote>
+<p>从github的仓库中克隆过来以后。</p>
+<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
+<blockquote>
+<p>pip install -r requirements/requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>pip install .</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<p>开发人员最好将<code>$PYTHONPATH</code>指向git克隆源的根目录。</p>
+<p>-&gt; 利用anaconda环境，其中，<code>anaconda</code>包含了conda、Python等180个多个科学包及依赖项。用户只需要运行以下行来安装sockeye(在一个没有GPU的实例上):</p>
+<blockquote>
+<p>conda create -n sockeye python=3.6 // 创建一个虚拟环境 sockeye</p>
+<p>source activate sockeye     //激活环境</p>
+<p>pip install sockeye –no-deps  //安装sockeye</p>
+</blockquote>
+<p>在使用GPU的实例上，下面的命令如下执行：</p>
+<blockquote>
+<p>conda create -n sockeye python=3.6</p>
+<p>source activate sockeye</p>
+<p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
+<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<h4 id="可选择的依赖关系"><a href="#可选择的依赖关系" class="headerlink" title="可选择的依赖关系"></a>可选择的依赖关系</h4><p>你可以安装Tensorboard来对训练过程可视化，您可以选择安装mxboard（<code>pip install mxboard</code>）。为了可视化过程，运行Tensorboard工具（<code>pip install tensorboard tensorflow</code>）日志目录指向训练输出文件夹：<code>tensorboard --logdir &lt;model&gt;</code>。</p>
+<p>如果要创建对齐图，需要安装matplotlib（pip install matplotlib）。</p>
+<h4 id="Running-sockeye"><a href="#Running-sockeye" class="headerlink" title="Running sockeye"></a>Running sockeye</h4><p>安装之后，可以使用诸如sockeye-train、sockeye-translate、sockeye-average和sockeye-embeddings之类的命令行工具。下面举例：</p>
+<blockquote>
+<p>sockeye-train <args></p>
+</blockquote>
+<p>同样，如果sockeye目录在$PYTHONPATH上，则可以直接运行模块:</p>
+<blockquote>
+<p>python -m sockeye.train <args></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -582,7 +724,7 @@
         
           <a href="/archives">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -748,6 +890,8 @@
 
 
   
+    
+      
     
       
     
