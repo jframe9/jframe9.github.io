@@ -292,6 +292,24 @@
                 <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
               </span>
             </span>
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
           <br>
 
         </div>
@@ -425,11 +443,7 @@
           </div>
           
     
-    
-  <div class="comments" id="comments">
-    <div id="lv-container" data-id="city" data-uid="MTAyMC80NzY1Mi8yNDE1MA=="></div>
-  </div>
-  
+    <div class="comments" id="comments"></div>
   
 
 
@@ -754,19 +768,27 @@
 
 
     
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
 <script>
-  window.livereOptions = {
-    refer: '2019/11/18/Conda-安装命令大全/'
-  };
-  (function(d, s) {
-    var j, e = d.getElementsByTagName(s)[0];
-    if (typeof LivereTower === 'function') { return; }
-    j = d.createElement(s);
-    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-    j.async = true;
-    e.parentNode.insertBefore(j, e);
-  })(document, 'script');
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'K7CsipHUIKEHungn0TaC8yAR-gzGzoHsz',
+    appKey: 'jX5aIeBHH0x9Njj9wC5eor8F',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn'
+  });
 </script>
 
 
