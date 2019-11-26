@@ -35,6 +35,8 @@
     <title>German to English</title>
     <url>/2019/11/24/German-to-English/</url>
     <content><![CDATA[<h3 id="德语译英语"><a href="#德语译英语" class="headerlink" title="德语译英语"></a>德语译英语</h3><p>在这份教程中，我们将会在数据集上训练一个德语-&gt;英语的<code>Sockeye</code>机器翻译模型。（数据集是2017年<code>WNT</code>）</p>
+<a id="more"></a>
+
 <h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p><code>Sockeye</code>期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与<code>Sockeye</code>一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做<a href="https://github.com/rsennrich/subword-nmt" target="_blank" rel="noopener">subword-nmt</a>. 运行以下命令来设置该工具:</p>
 <blockquote>
 <p>git clone <a href="https://github.com/rsennrich/subword-nmt.git" target="_blank" rel="noopener">https://github.com/rsennrich/subword-nmt.git</a></p>

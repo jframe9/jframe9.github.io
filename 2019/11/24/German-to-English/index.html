@@ -57,15 +57,15 @@
   };
 </script>
 
-  <meta name="description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT） 设置Sockeye期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与Sockeye一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做subword-nmt. 运行">
+  <meta name="description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT）">
 <meta name="keywords" content="tutorials,example">
 <meta property="og:type" content="article">
 <meta property="og:title" content="German to English">
 <meta property="og:url" content="http:&#x2F;&#x2F;blog.chenjf.cf&#x2F;2019&#x2F;11&#x2F;24&#x2F;German-to-English&#x2F;index.html">
 <meta property="og:site_name" content="Jfchen&#39;s blog">
-<meta property="og:description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT） 设置Sockeye期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与Sockeye一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做subword-nmt. 运行">
+<meta property="og:description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T06:07:46.284Z">
+<meta property="og:updated_time" content="2019-11-26T08:31:17.966Z">
 <meta name="twitter:card" content="summary">
   <link rel="alternate" href="/atom.xml" title="Jfchen's blog" type="application/atom+xml">
   <link rel="canonical" href="http://blog.chenjf.cf/2019/11/24/German-to-English/">
@@ -291,7 +291,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-26 14:07:46" itemprop="dateModified" datetime="2019-11-26T14:07:46+08:00">2019-11-26</time>
+                <time title="修改时间：2019-11-26 16:31:17" itemprop="dateModified" datetime="2019-11-26T16:31:17+08:00">2019-11-26</time>
               </span>
             
           
@@ -350,6 +350,8 @@
 
       
         <h3 id="德语译英语"><a href="#德语译英语" class="headerlink" title="德语译英语"></a>德语译英语</h3><p>在这份教程中，我们将会在数据集上训练一个德语-&gt;英语的<code>Sockeye</code>机器翻译模型。（数据集是2017年<code>WNT</code>）</p>
+<a id="more"></a>
+
 <h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p><code>Sockeye</code>期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与<code>Sockeye</code>一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做<a href="https://github.com/rsennrich/subword-nmt" target="_blank" rel="noopener">subword-nmt</a>. 运行以下命令来设置该工具:</p>
 <blockquote>
 <p>git clone <a href="https://github.com/rsennrich/subword-nmt.git" target="_blank" rel="noopener">https://github.com/rsennrich/subword-nmt.git</a></p>
