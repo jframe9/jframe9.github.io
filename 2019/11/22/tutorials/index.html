@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Jfchen&#39;s blog">
 <meta property="og:description" content="Sequence copy task这篇教程将会向你展示Sockeye在一些简单任务上简单应用：复制一个序列。我们将生成由可变长度的数字组成的序列。然后，任务是训练一个模型，该模型将序列从源复制到目标。这个任务一方面非常困难，足够有趣，另一方面可以快速地训练一个模型。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-24T13:16:09.785Z">
+<meta property="og:updated_time" content="2019-11-26T11:14:48.209Z">
 <meta name="twitter:card" content="summary">
   <link rel="alternate" href="/atom.xml" title="Jfchen's blog" type="application/atom+xml">
   <link rel="canonical" href="http://blog.chenjf.cf/2019/11/22/tutorials/">
@@ -291,7 +291,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-24 21:16:09" itemprop="dateModified" datetime="2019-11-24T21:16:09+08:00">2019-11-24</time>
+                <time title="修改时间：2019-11-26 19:14:48" itemprop="dateModified" datetime="2019-11-26T19:14:48+08:00">2019-11-26</time>
               </span>
             
           
@@ -365,11 +365,11 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">python3 -m sockeye.train -s data/train.source \</span><br><span class="line">                         -t data/train.target \</span><br><span class="line">                         -vs data/dev.source \</span><br><span class="line">                         -vt data/dev.target \</span><br><span class="line">                         --encoder rnn --decoder rnn \</span><br><span class="line">                         --num-layers <span class="number">1</span>:<span class="number">1</span> \</span><br><span class="line">                         --num-embed <span class="number">32</span> \</span><br><span class="line">                         --rnn-num-hidden <span class="number">64</span> \</span><br><span class="line">                         --rnn-attention-type dot \</span><br><span class="line">                         --use-cpu \</span><br><span class="line">                         --metrics perplexity accuracy \</span><br><span class="line">                         --max-num-checkpoint-<span class="keyword">not</span>-improved <span class="number">3</span> \</span><br><span class="line">                         -o seqcopy_model</span><br></pre></td></tr></table></figure>
 
 <p>这将训练一个1层的<code>RNN</code>模型，<code>双向LSTM</code>作为编码器，<code>单向LSTM</code>作为解码器。<code>RNN</code>有64个隐藏层单元，我们学习的嵌入大小32。查看日志，我们可以看到我们的训练数据是根据桶的长度分配的。此外，<code>Sockeye</code>将负责正确填充序列和屏蔽网络的相关部分，以处理可变长度的序列。</p>
-<h5 id="指标和检查点"><a href="#指标和检查点" class="headerlink" title="指标和检查点"></a>指标和检查点</h5><p>在培训期间，<code>Sockeye</code>将打印训练和验证数据的相关指标。指标可以通过使用<code>--metrics</code>参数。每次创建检查点时都要评估验证指标。在检查点期间，当前的模型参数被保存到模型目录中，并对当前的验证分数进行评估。默认情况下，<code>Sockeye</code>将每1000次更新创建一个检查点。这可以通过<code>--checkpoint-interval</code>参数进行调整。</p>
+<h5 id="指标和检查点"><a href="#指标和检查点" class="headerlink" title="指标和检查点"></a>指标和检查点</h5><p>在训练期间，<code>Sockeye</code>将打印训练和验证数据的相关指标。指标可以通过使用<code>--metrics</code>参数。每次创建检查点时都要评估验证指标。在检查点期间，当前的模型参数被保存到模型目录中，并对当前的验证分数进行评估。默认情况下，<code>Sockeye</code>将每1000次更新创建一个检查点。这可以通过<code>--checkpoint-interval</code>参数进行调整。</p>
 <p>从日志中可以看出，最初的精度在0.1左右:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[INFO:sockeye.training] Training started.</span><br><span class="line">[INFO:sockeye.callback] Early stopping by optimizing &apos;perplexity&apos;</span><br><span class="line">[INFO:root] Epoch[0] Batch [50]  Speed: 683.23 samples/sec perplexity=14.104128 accuracy=0.092011</span><br><span class="line">[INFO:root] Epoch[0] Batch [100] Speed: 849.97 samples/sec perplexity=13.036482 accuracy=0.096760</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>对于大小为10的词汇表，这基本上意味着模型是随机猜测的。随着训练的进展，我们看到在14个epochs之后，<code>accuracy</code>上升到<del>1.0，<code>perplexity</code>下降到</del>1.0。<code>Sockeye</code>根据检查点跟踪的验证指标执行早期停止。一旦几个检查点的验证指标没有改善，培训就会停止。可以调整容忍的没有改进的检查点的数量(<code>--max-num-checkpoint-not-improved</code>)。</p>
+<p>对于大小为10的词汇表，这基本上意味着模型是随机猜测的。随着训练的进展，我们看到在14个epochs之后，<code>accuracy</code>上升到<del>1.0，<code>perplexity</code>下降到</del>1.0。<code>Sockeye</code>根据检查点跟踪的验证指标执行早期停止。一旦几个检查点的验证指标没有改善，训练就会停止。可以调整容忍的没有改进的检查点的数量(<code>--max-num-checkpoint-not-improved</code>)。</p>
 <h5 id="训练好的模型"><a href="#训练好的模型" class="headerlink" title="训练好的模型"></a>训练好的模型</h5><p>可以在<code>seqcopy_model</code>文件夹中找到经过训练的模型。该文件夹包含训练后运行模型所需的所有内容。许多重要的<code>params.best</code>包含具有最佳验证分数的参数。在训练中，<code>params.best</code>将不断更新，以指向当前的最佳参数。这意味着即使模型仍在训练中，您也可以使用model文件夹进行翻译，如下一节所述。所有其他参数都可以在名为<code>param.$NUM_CHECKPOINT</code>的文件中找到。<code>config</code>中包含所有的模型参数以及对训练期间使用的数据集的引用。<code>version</code> 参考用于训练的<code>Sockeye</code>版本，以检查与用于解码的版本的潜在兼容性问题。</p>
 <p>另外，我们保留了您在<code>标准输出</code>上看到的打印日志的副本。源词汇表和目标词汇表存储在<code>vocab.src.json</code>和 <code>vocab.trg.json</code>中。如果你打开这个文件，你可以看到除了数字之外，<code>Sockeye</code>还添加了一些特殊的符号来表示句子的边界、未知的单词和填充符号。</p>
 <h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo &quot;7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0&quot; | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu</span><br><span class="line"></span><br><span class="line">        7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0</span><br></pre></td></tr></table></figure>
@@ -722,6 +722,15 @@
 
 
   
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
 
 

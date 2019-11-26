@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Jfchen&#39;s blog">
 <meta property="og:description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T08:31:17.966Z">
+<meta property="og:updated_time" content="2019-11-26T11:15:05.548Z">
 <meta name="twitter:card" content="summary">
   <link rel="alternate" href="/atom.xml" title="Jfchen's blog" type="application/atom+xml">
   <link rel="canonical" href="http://blog.chenjf.cf/2019/11/24/German-to-English/">
@@ -291,7 +291,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-26 16:31:17" itemprop="dateModified" datetime="2019-11-26T16:31:17+08:00">2019-11-26</time>
+                <time title="修改时间：2019-11-26 19:15:05" itemprop="dateModified" datetime="2019-11-26T19:15:05+08:00">2019-11-26</time>
               </span>
             
           
@@ -383,7 +383,19 @@
 <blockquote>
 <p>Globaldarlehen sind Kreditlinien an zwischengeschaltete Institute -&gt; Glob@@ al@@ dar@@ lehen sind Kredit@@ linien an zwischen@@ gesch@@ al@@ tete Institute</p>
 </blockquote>
-<h4 id="Training（训练）"><a href="#Training（训练）" class="headerlink" title="Training（训练）"></a>Training（训练）</h4><p>数据预处理后，我们就可以开始训练。</p>
+<h4 id="Training（训练）"><a href="#Training（训练）" class="headerlink" title="Training（训练）"></a>Training（训练）</h4><p>数据预处理后，我们就可以开始训练。请注意，<code>Sockeye</code>将把所有训练数据加载到内存中，以便能够在每个<code>epoch</code>之后轻松地重新洗牌。根据可用内存的大小，您可能希望减少本教程的培训语料库的大小:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># (Optional: run this if you have limited RAM on the training machine)如果训练空间有限，就使用这个指令运行</span></span><br><span class="line">head -n <span class="number">200000</span> corpus.tc.BPE.de &gt; corpus.tc.BPE.de.tmp &amp;&amp; mv corpus.tc.BPE.de.tmp corpus.tc.BPE.de</span><br><span class="line">head -n <span class="number">200000</span> corpus.tc.BPE.en &gt; corpus.tc.BPE.en.tmp &amp;&amp; mv corpus.tc.BPE.en.tmp corpus.tc.BPE.en</span><br></pre></td></tr></table></figure>
+
+<p>在我们开始训练之前，我们会准备训练数据，将其分解成碎片，并以矩阵格式序列化:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -m sockeye.prepare_data \</span><br><span class="line">                        -s corpus.tc.BPE.de \</span><br><span class="line">                        -t corpus.tc.BPE.en \</span><br><span class="line">                        -o train_data</span><br></pre></td></tr></table></figure>
+
+<p>虽然这是一个可选步骤，但它的优点是大大降低了训练开始前所需的时间，并且限制了内存使用，因为一次只将一个碎片加载到内存中。</p>
+<p>我们现在可以开始训练过程了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">python -m sockeye.train -d train_data \</span><br><span class="line">                        -vs newstest2016.tc.BPE.de \</span><br><span class="line">                        -vt newstest2016.tc.BPE.en \</span><br><span class="line">                        --encoder rnn \</span><br><span class="line">                        --decoder rnn \</span><br><span class="line">                        --num-embed <span class="number">256</span> \</span><br><span class="line">                        --rnn-num-hidden <span class="number">512</span> \</span><br><span class="line">                        --rnn-attention-type dot \</span><br><span class="line">                        --max-seq-len <span class="number">60</span> \</span><br><span class="line">                        --decode-<span class="keyword">and</span>-evaluate <span class="number">500</span> \</span><br><span class="line">                        --use-cpu \</span><br><span class="line">                        -o wmt_model</span><br></pre></td></tr></table></figure>
+
+<p>训练使用的是1层的双向LSTM模型来编码，带有一层的点在注意力机制来解码。<code>Sockeye</code>提供了关于模型架构的不同选项，例如：残差网络堆叠RNN（<code>--num-layers</code>, <code>--rnn-residual-connections</code>），<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">ransformer</a>编码和解码（<code>--encoder transformer</code>, <code>--decoder transformer</code>），<a href="https://arxiv.org/pdf/1705.03122" target="_blank" rel="noopener">ConvS2S</a>(<code>--encoder cnn</code>, <code>--decoder cnn</code>),各种RNN（<code>--rnn-cell-type</code>）以及注意力机制的类型（<code>--attention-type</code>）等等。</p>
+<p>模型中还包含有几个参数用来控制训练过程本身，除非你指定一个不同的优化器（<code>--optimizer</code>）,否则将使用Adam。此外，你可以控制批次大小（<code>--batch-size</code>）,lr schedule(–learning-rate-schedule),和其他与训练相关的参数。</p>
+<p>训练将持续进行，直到验证的复杂性停止改善。<code>Sockeye</code>在与训练相同的设备上运行的每个检查点上，在单独的进程中启动一个解码器，以评估诸如<code>BLEU</code>之类的指标。</p>
 
     </div>
 
@@ -726,6 +738,15 @@
 
 
   
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
 
 
