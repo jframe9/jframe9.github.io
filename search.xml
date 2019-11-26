@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>report review</title>
+    <url>/2019/11/26/report-review/</url>
+    <content><![CDATA[<h3 id="怎么写Literature-review-文献综述"><a href="#怎么写Literature-review-文献综述" class="headerlink" title="怎么写Literature review(文献综述)?"></a>怎么写Literature review(文献综述)?</h3><blockquote>
+<p>莫爲</p>
+<p>知乎</p>
+</blockquote>
+<p>文献综述具体写作方法✍:</p>
+<ul>
+<li>首先根据你的论文topic想出<strong>5个</strong>关键词，依次输入谷歌学术搜索引擎（或者其他学校资源论文库） 。</li>
+<li>在电脑里准备两个参考文献文件夹，一个名写Useful，另外一个文件夹写maybe useful。</li>
+<li>接下来浏览搜索到的文献标题，看到和自己研究方向相关的题目就点进去，一目十行阅读文献，一共有三个部分尤其重要：Abstract(摘要)、Introduction(介绍)、Conclusion(结论)。文章的头尾部分</li>
+<li>浏览后觉得和自己研究方向及论文主题相关度高的，保存到useful文件夹中，如果看完觉得emmmm…(作者老师原话，哈哈哈这种感觉只可意会不可言传)，大概就是觉得有那么点关系，但又不舍得pass的文献，就放进maybe useful文件夹 。</li>
+<li>两个文件夹各存满12篇阅读文献，首先从Uesful文件夹开始。一篇一篇<strong>精读</strong>这些文献。精读的时就按照自己平时的方法，多做笔记，摘录提取<strong>key point</strong>。</li>
+<li>精读的过程不是一遍两遍就能完成的，每次读一遍，你就会有不同的体会。接下来，你可以慢慢关注下<strong>methodology,</strong>在阅读的过程中开始思考自己文章的论证方法，为你的research method部分做准备，如果是实证论文，也可以开始想一下自己模型的雏形。</li>
+<li>读第二遍第三遍的时候，在电脑打开word，开始<strong>一边读一边记录</strong>要写进文献综述的部分，注意要用<strong>自己的话重述</strong>，写的时候加上标注。</li>
+<li>最后将所有文献进行整理引用，把同一小主题的贴在同一段中，也可以加上小标题，使自己的文章更有逻辑，条理更清晰 。</li>
+<li>尽量找出不同论文中矛盾冲突的点，凸显出学术圈思维碰撞的火花～比如某些大佬实证得出两个变量是正相关，而其他几位大佬发现负相关，尽量找出不同论文中矛盾冲突的点，凸显出学术圈思维碰撞的火花～比如某些大佬实证得出两个变量是正相关，而其他几位大佬发现负相关。</li>
+<li>学会索引去看文献引用的文献（我戏称为文献爸爸 ）和文献被引用的文献（文献儿子 ），去看理论是如何发展的，也会在此过程中发现更多好文献，不断扩充自己的reference文献库！</li>
+</ul>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+      </categories>
+      <tags>
+        <tag>reviews</tag>
+        <tag>experience</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>German to English</title>
+    <url>/2019/11/24/German-to-English/</url>
+    <content><![CDATA[<h3 id="德语译英语"><a href="#德语译英语" class="headerlink" title="德语译英语"></a>德语译英语</h3><p>在这份教程中，我们将会在数据集上训练一个德语-&gt;英语的<code>Sockeye</code>机器翻译模型。（数据集是2017年<code>WNT</code>）</p>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p><code>Sockeye</code>期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与<code>Sockeye</code>一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做<a href="https://github.com/rsennrich/subword-nmt" target="_blank" rel="noopener">subword-nmt</a>. 运行以下命令来设置该工具:</p>
+<blockquote>
+<p>git clone <a href="https://github.com/rsennrich/subword-nmt.git" target="_blank" rel="noopener">https://github.com/rsennrich/subword-nmt.git</a></p>
+<p>export PYTHONPATH=$(pwd)/subword-nmt:$PYTHONPATH</p>
+</blockquote>
+<p>为了可视化对齐，我们需要<code>matplotlib</code>。如果你没有这个库，可以通过以下指令来安装:</p>
+<blockquote>
+<p>pip install matplotlib</p>
+</blockquote>
+<p>我们将使用<code>Tensorboard</code>及其<code>MXNet适配器mxboard</code>来可视化培训进度。安装使用:</p>
+<blockquote>
+<p>pip install tensorboard mxboard</p>
+</blockquote>
+<h4 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h4><p>所有的命令都是假设你在CPU的运行环境下，如果你想使用GPU，你可以通过移除<code>--use-cpu</code>来实现，对于多个gpu，您可以通过<code>--device-ids</code>命令行参数使用它们。</p>
+<h4 id="Data（数据）"><a href="#Data（数据）" class="headerlink" title="Data（数据）"></a>Data（数据）</h4><p>我们将使用WMT 2017新闻翻译共享任务提供的数据。使用以下命令下载数据:</p>
+<blockquote>
+<p>wget <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz</a><br>wget <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz</a><br>gunzip corpus.tc.de.gz<br>gunzip corpus.tc.en.gz<br>curl <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz</a> | tar xvzf -</p>
+</blockquote>
+<h4 id="Preprocessing-预处理数据"><a href="#Preprocessing-预处理数据" class="headerlink" title="Preprocessing(预处理数据)"></a>Preprocessing(预处理数据)</h4><p>数据已经被标记了。此外，我们将把单词分成子单词。首先，我们需要建立我们的BPE词汇表:</p>
+<blockquote>
+<p>python -m learn_joint_bpe_and_vocab –input corpus.tc.de corpus.tc.en <br>                                    -s 30000 <br>                                    -o bpe.codes <br>                                    –write-vocabulary bpe.vocab.de bpe.vocab.en</p>
+</blockquote>
+<p>这将创建一个联合的源和目标BPE词汇表。接下来，我们使用应用字节对编码到我们的培训和开发数据:</p>
+<blockquote>
+<p>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.de –vocabulary-threshold 50 &lt; corpus.tc.de &gt; corpus.tc.BPE.de<br>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.en –vocabulary-threshold 50 &lt; corpus.tc.en &gt; corpus.tc.BPE.en</p>
+<p>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.de –vocabulary-threshold 50 &lt; newstest2016.tc.de &gt; newstest2016.tc.BPE.de<br>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.en –vocabulary-threshold 50 &lt; newstest2016.tc.en &gt; newstest2016.tc.BPE.en</p>
+</blockquote>
+<p>查看数据，你可以看到单词是如何被特殊的序列<code>@@</code>分隔成子单词的:</p>
+<blockquote>
+<p>Globaldarlehen sind Kreditlinien an zwischengeschaltete Institute -&gt; Glob@@ al@@ dar@@ lehen sind Kredit@@ linien an zwischen@@ gesch@@ al@@ tete Institute</p>
+</blockquote>
+<h4 id="Training（训练）"><a href="#Training（训练）" class="headerlink" title="Training（训练）"></a>Training（训练）</h4><p>数据预处理后，我们就可以开始训练。</p>
+]]></content>
+      <categories>
+        <category>机器翻译</category>
+      </categories>
+      <tags>
+        <tag>tutorials</tag>
+        <tag>example</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Step-by-step tutorials</title>
     <url>/2019/11/22/tutorials/</url>
     <content><![CDATA[<h3 id="Sequence-copy-task"><a href="#Sequence-copy-task" class="headerlink" title="Sequence copy task"></a>Sequence copy task</h3><p>这篇教程将会向你展示<code>Sockeye</code>在一些简单任务上简单应用：复制一个序列。我们将生成由可变长度的数字组成的序列。然后，任务是训练一个模型，该模型将序列从源复制到目标。这个任务一方面非常困难，足够有趣，另一方面可以快速地训练一个模型。</p>
@@ -40,78 +114,7 @@
       </categories>
       <tags>
         <tag>tutorials</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>亚马逊机器翻译框架-训练说明文档(0)</title>
-    <url>/2019/11/22/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/</url>
-    <content><![CDATA[<h3 id="Setup-amp-Installation"><a href="#Setup-amp-Installation" class="headerlink" title="Setup &amp; Installation"></a>Setup &amp; Installation</h3><h4 id="依存关系"><a href="#依存关系" class="headerlink" title="依存关系"></a>依存关系</h4><p><code>Sockeye</code>所需要的环境：</p>
-<ul>
-<li><strong>Python3</strong></li>
-<li>MXNet</li>
-<li>numpy</li>
-</ul>
-<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>下面有几个有关<code>Sockeye</code>和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。</p>
-<a id="more"></a>
-
-<p>-&gt; <strong>via pip</strong></p>
-<p>最简单的方式是使用pip:</p>
-<blockquote>
-<p>pip install sockeye</p>
-</blockquote>
-<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
-<blockquote>
-<p> wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
-<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
-<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
-</blockquote>
-<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
-<p>-&gt; <strong>via source…</strong></p>
-<p>如果你只想使用sockeye而不扩展它，只需通过安装它即可：</p>
-<blockquote>
-<p>pip install -r requirements/requirements.txt</p>
-<p>pip install .</p>
-</blockquote>
-<p>从github的仓库中克隆过来以后。</p>
-<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
-<blockquote>
-<p>pip install -r requirements/requirements.gpu-cu${CUDA_VERSION}.txt</p>
-<p>pip install .</p>
-</blockquote>
-<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
-<p>开发人员最好将<code>$PYTHONPATH</code>指向git克隆源的根目录。</p>
-<p>-&gt; 利用anaconda环境，其中，<code>anaconda</code>包含了conda、Python等180个多个科学包及依赖项。用户只需要运行以下行来安装sockeye(在一个没有GPU的实例上):</p>
-<blockquote>
-<p>conda create -n sockeye python=3.6 // 创建一个虚拟环境 sockeye</p>
-<p>source activate sockeye     //激活环境</p>
-<p>pip install sockeye –no-deps  //安装sockeye</p>
-</blockquote>
-<p>在使用GPU的实例上，下面的命令如下执行：</p>
-<blockquote>
-<p>conda create -n sockeye python=3.6</p>
-<p>source activate sockeye</p>
-<p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
-<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
-<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
-</blockquote>
-<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
-<h4 id="可选择的依赖关系"><a href="#可选择的依赖关系" class="headerlink" title="可选择的依赖关系"></a>可选择的依赖关系</h4><p>你可以安装Tensorboard来对训练过程可视化，您可以选择安装mxboard（<code>pip install mxboard</code>）。为了可视化过程，运行Tensorboard工具（<code>pip install tensorboard tensorflow</code>）日志目录指向训练输出文件夹：<code>tensorboard --logdir &lt;model&gt;</code>。</p>
-<p>如果要创建对齐图，需要安装matplotlib（pip install matplotlib）。</p>
-<h4 id="Running-sockeye"><a href="#Running-sockeye" class="headerlink" title="Running sockeye"></a>Running sockeye</h4><p>安装之后，可以使用诸如sockeye-train、sockeye-translate、sockeye-average和sockeye-embeddings之类的命令行工具。下面举例：</p>
-<blockquote>
-<p>sockeye-train <args></p>
-</blockquote>
-<p>同样，如果sockeye目录在$PYTHONPATH上，则可以直接运行模块:</p>
-<blockquote>
-<p>python -m sockeye.train <args></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>机器翻译</category>
-      </categories>
-      <tags>
-        <tag>AI</tag>
-        <tag>machine translate</tag>
+        <tag>example</tag>
       </tags>
   </entry>
   <entry>
@@ -285,6 +288,78 @@
         <tag>conda</tag>
         <tag>随笔</tag>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>亚马逊机器翻译框架-训练说明文档(0)</title>
+    <url>/2019/11/18/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/</url>
+    <content><![CDATA[<h3 id="Setup-amp-Installation"><a href="#Setup-amp-Installation" class="headerlink" title="Setup &amp; Installation"></a>Setup &amp; Installation</h3><h4 id="依存关系"><a href="#依存关系" class="headerlink" title="依存关系"></a>依存关系</h4><p><code>Sockeye</code>所需要的环境：</p>
+<ul>
+<li><strong>Python3</strong></li>
+<li>MXNet</li>
+<li>numpy</li>
+</ul>
+<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>下面有几个有关<code>Sockeye</code>和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。</p>
+<a id="more"></a>
+
+<p>-&gt; <strong>via pip</strong></p>
+<p>最简单的方式是使用pip:</p>
+<blockquote>
+<p>pip install sockeye</p>
+</blockquote>
+<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
+<blockquote>
+<p> wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
+<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<p>-&gt; <strong>via source…</strong></p>
+<p>如果你只想使用sockeye而不扩展它，只需通过安装它即可：</p>
+<blockquote>
+<p>pip install -r requirements/requirements.txt</p>
+<p>pip install .</p>
+</blockquote>
+<p>从github的仓库中克隆过来以后。</p>
+<p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p>
+<blockquote>
+<p>pip install -r requirements/requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>pip install .</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<p>开发人员最好将<code>$PYTHONPATH</code>指向git克隆源的根目录。</p>
+<p>-&gt; 利用anaconda环境，其中，<code>anaconda</code>包含了conda、Python等180个多个科学包及依赖项。用户只需要运行以下行来安装sockeye(在一个没有GPU的实例上):</p>
+<blockquote>
+<p>conda create -n sockeye python=3.6 // 创建一个虚拟环境 sockeye</p>
+<p>source activate sockeye     //激活环境</p>
+<p>pip install sockeye –no-deps  //安装sockeye</p>
+</blockquote>
+<p>在使用GPU的实例上，下面的命令如下执行：</p>
+<blockquote>
+<p>conda create -n sockeye python=3.6</p>
+<p>source activate sockeye</p>
+<p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p>
+<p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p>
+<p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p>
+</blockquote>
+<p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p>
+<h4 id="可选择的依赖关系"><a href="#可选择的依赖关系" class="headerlink" title="可选择的依赖关系"></a>可选择的依赖关系</h4><p>你可以安装Tensorboard来对训练过程可视化，您可以选择安装mxboard（<code>pip install mxboard</code>）。为了可视化过程，运行Tensorboard工具（<code>pip install tensorboard tensorflow</code>）日志目录指向训练输出文件夹：<code>tensorboard --logdir &lt;model&gt;</code>。</p>
+<p>如果要创建对齐图，需要安装matplotlib（pip install matplotlib）。</p>
+<h4 id="Running-sockeye"><a href="#Running-sockeye" class="headerlink" title="Running sockeye"></a>Running sockeye</h4><p>安装之后，可以使用诸如sockeye-train、sockeye-translate、sockeye-average和sockeye-embeddings之类的命令行工具。下面举例：</p>
+<blockquote>
+<p>sockeye-train <args></p>
+</blockquote>
+<p>同样，如果sockeye目录在$PYTHONPATH上，则可以直接运行模块:</p>
+<blockquote>
+<p>python -m sockeye.train <args></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>机器翻译</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+        <tag>machine translate</tag>
       </tags>
   </entry>
 </search>

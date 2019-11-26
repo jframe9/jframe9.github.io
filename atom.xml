@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.chenjf.cf/"/>
-  <updated>2019-11-22T14:14:12.696Z</updated>
+  <updated>2019-11-26T08:25:59.246Z</updated>
   <id>http://blog.chenjf.cf/</id>
   
   <author>
@@ -17,11 +17,67 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>report review</title>
+    <link href="http://blog.chenjf.cf/2019/11/26/report-review/"/>
+    <id>http://blog.chenjf.cf/2019/11/26/report-review/</id>
+    <published>2019-11-26T06:08:25.000Z</published>
+    <updated>2019-11-26T08:25:59.246Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="怎么写Literature-review-文献综述"><a href="#怎么写Literature-review-文献综述" class="headerlink" title="怎么写Literature review(文献综述)?"></a>怎么写Literature review(文献综述)?</h3><blockquote><p>莫爲</p><p>知乎</p></blockquote><p>文献综述具体写作方法✍:</p><ul><li>首先根据你的论文topic想出<strong>5个</strong>关键词，依次输入谷歌学术搜索引擎（或者其他学校资源论文库） 。</li><li>在电脑里准备两个参考文献文件夹，一个名写Useful，另外一个文件夹写maybe useful。</li><li>接下来浏览搜索到的文献标题，看到和自己研究方向相关的题目就点进去，一目十行阅读文献，一共有三个部分尤其重要：Abstract(摘要)、Introduction(介绍)、Conclusion(结论)。文章的头尾部分</li><li>浏览后觉得和自己研究方向及论文主题相关度高的，保存到useful文件夹中，如果看完觉得emmmm…(作者老师原话，哈哈哈这种感觉只可意会不可言传)，大概就是觉得有那么点关系，但又不舍得pass的文献，就放进maybe useful文件夹 。</li><li>两个文件夹各存满12篇阅读文献，首先从Uesful文件夹开始。一篇一篇<strong>精读</strong>这些文献。精读的时就按照自己平时的方法，多做笔记，摘录提取<strong>key point</strong>。</li><li>精读的过程不是一遍两遍就能完成的，每次读一遍，你就会有不同的体会。接下来，你可以慢慢关注下<strong>methodology,</strong>在阅读的过程中开始思考自己文章的论证方法，为你的research method部分做准备，如果是实证论文，也可以开始想一下自己模型的雏形。</li><li>读第二遍第三遍的时候，在电脑打开word，开始<strong>一边读一边记录</strong>要写进文献综述的部分，注意要用<strong>自己的话重述</strong>，写的时候加上标注。</li><li>最后将所有文献进行整理引用，把同一小主题的贴在同一段中，也可以加上小标题，使自己的文章更有逻辑，条理更清晰 。</li><li>尽量找出不同论文中矛盾冲突的点，凸显出学术圈思维碰撞的火花～比如某些大佬实证得出两个变量是正相关，而其他几位大佬发现负相关，尽量找出不同论文中矛盾冲突的点，凸显出学术圈思维碰撞的火花～比如某些大佬实证得出两个变量是正相关，而其他几位大佬发现负相关。</li><li>学会索引去看文献引用的文献（我戏称为文献爸爸 ）和文献被引用的文献（文献儿子 ），去看理论是如何发展的，也会在此过程中发现更多好文献，不断扩充自己的reference文献库！</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;怎么写Literature-review-文献综述&quot;&gt;&lt;a href=&quot;#怎么写Literature-review-文献综述&quot; class=&quot;headerlink&quot; title=&quot;怎么写Literature review(文献综述)?&quot;&gt;&lt;/a&gt;怎么写Litera
+      
+    
+    </summary>
+    
+    
+      <category term="经验分享" scheme="http://blog.chenjf.cf/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/"/>
+    
+    
+      <category term="reviews" scheme="http://blog.chenjf.cf/tags/reviews/"/>
+    
+      <category term="experience" scheme="http://blog.chenjf.cf/tags/experience/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>German to English</title>
+    <link href="http://blog.chenjf.cf/2019/11/24/German-to-English/"/>
+    <id>http://blog.chenjf.cf/2019/11/24/German-to-English/</id>
+    <published>2019-11-24T13:15:21.000Z</published>
+    <updated>2019-11-26T06:07:46.284Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="德语译英语"><a href="#德语译英语" class="headerlink" title="德语译英语"></a>德语译英语</h3><p>在这份教程中，我们将会在数据集上训练一个德语-&gt;英语的<code>Sockeye</code>机器翻译模型。（数据集是2017年<code>WNT</code>）</p><h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p><code>Sockeye</code>期望标记数据作为输入。在本教程中，我们使用已经标记的数据。但是，请记住这一点，以便与<code>Sockeye</code>一起使用任何其他数据集。除了标记化之外，我们还将使用字节对编码(BPE)将单词拆分为子单词。为了做到这一点，我们使用了一个叫做<a href="https://github.com/rsennrich/subword-nmt" target="_blank" rel="noopener">subword-nmt</a>. 运行以下命令来设置该工具:</p><blockquote><p>git clone <a href="https://github.com/rsennrich/subword-nmt.git" target="_blank" rel="noopener">https://github.com/rsennrich/subword-nmt.git</a></p><p>export PYTHONPATH=$(pwd)/subword-nmt:$PYTHONPATH</p></blockquote><p>为了可视化对齐，我们需要<code>matplotlib</code>。如果你没有这个库，可以通过以下指令来安装:</p><blockquote><p>pip install matplotlib</p></blockquote><p>我们将使用<code>Tensorboard</code>及其<code>MXNet适配器mxboard</code>来可视化培训进度。安装使用:</p><blockquote><p>pip install tensorboard mxboard</p></blockquote><h4 id="GPU"><a href="#GPU" class="headerlink" title="GPU"></a>GPU</h4><p>所有的命令都是假设你在CPU的运行环境下，如果你想使用GPU，你可以通过移除<code>--use-cpu</code>来实现，对于多个gpu，您可以通过<code>--device-ids</code>命令行参数使用它们。</p><h4 id="Data（数据）"><a href="#Data（数据）" class="headerlink" title="Data（数据）"></a>Data（数据）</h4><p>我们将使用WMT 2017新闻翻译共享任务提供的数据。使用以下命令下载数据:</p><blockquote><p>wget <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.de.gz</a><br>wget <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/corpus.tc.en.gz</a><br>gunzip corpus.tc.de.gz<br>gunzip corpus.tc.en.gz<br>curl <a href="http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz" target="_blank" rel="noopener">http://data.statmt.org/wmt17/translation-task/preprocessed/de-en/dev.tgz</a> | tar xvzf -</p></blockquote><h4 id="Preprocessing-预处理数据"><a href="#Preprocessing-预处理数据" class="headerlink" title="Preprocessing(预处理数据)"></a>Preprocessing(预处理数据)</h4><p>数据已经被标记了。此外，我们将把单词分成子单词。首先，我们需要建立我们的BPE词汇表:</p><blockquote><p>python -m learn_joint_bpe_and_vocab –input corpus.tc.de corpus.tc.en <br>                                    -s 30000 <br>                                    -o bpe.codes <br>                                    –write-vocabulary bpe.vocab.de bpe.vocab.en</p></blockquote><p>这将创建一个联合的源和目标BPE词汇表。接下来，我们使用应用字节对编码到我们的培训和开发数据:</p><blockquote><p>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.de –vocabulary-threshold 50 &lt; corpus.tc.de &gt; corpus.tc.BPE.de<br>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.en –vocabulary-threshold 50 &lt; corpus.tc.en &gt; corpus.tc.BPE.en</p><p>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.de –vocabulary-threshold 50 &lt; newstest2016.tc.de &gt; newstest2016.tc.BPE.de<br>python -m apply_bpe -c bpe.codes –vocabulary bpe.vocab.en –vocabulary-threshold 50 &lt; newstest2016.tc.en &gt; newstest2016.tc.BPE.en</p></blockquote><p>查看数据，你可以看到单词是如何被特殊的序列<code>@@</code>分隔成子单词的:</p><blockquote><p>Globaldarlehen sind Kreditlinien an zwischengeschaltete Institute -&gt; Glob@@ al@@ dar@@ lehen sind Kredit@@ linien an zwischen@@ gesch@@ al@@ tete Institute</p></blockquote><h4 id="Training（训练）"><a href="#Training（训练）" class="headerlink" title="Training（训练）"></a>Training（训练）</h4><p>数据预处理后，我们就可以开始训练。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;德语译英语&quot;&gt;&lt;a href=&quot;#德语译英语&quot; class=&quot;headerlink&quot; title=&quot;德语译英语&quot;&gt;&lt;/a&gt;德语译英语&lt;/h3&gt;&lt;p&gt;在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的&lt;code&gt;Sockeye&lt;/code&gt;机器翻译模型。（
+      
+    
+    </summary>
+    
+    
+      <category term="机器翻译" scheme="http://blog.chenjf.cf/categories/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="tutorials" scheme="http://blog.chenjf.cf/tags/tutorials/"/>
+    
+      <category term="example" scheme="http://blog.chenjf.cf/tags/example/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Step-by-step tutorials</title>
     <link href="http://blog.chenjf.cf/2019/11/22/tutorials/"/>
     <id>http://blog.chenjf.cf/2019/11/22/tutorials/</id>
     <published>2019-11-22T12:30:58.000Z</published>
-    <updated>2019-11-22T14:14:12.696Z</updated>
+    <updated>2019-11-24T13:16:09.785Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Sequence-copy-task"><a href="#Sequence-copy-task" class="headerlink" title="Sequence copy task"></a>Sequence copy task</h3><p>这篇教程将会向你展示<code>Sockeye</code>在一些简单任务上简单应用：复制一个序列。我们将生成由可变长度的数字组成的序列。然后，任务是训练一个模型，该模型将序列从源复制到目标。这个任务一方面非常困难，足够有趣，另一方面可以快速地训练一个模型。</p><a id="more"></a><h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><p>对于这份教程，我们假定你已经成功安装<code>Sockeye</code>。我们将会使用<code>Sockeye</code>仓库中的脚本，因此你可以克隆仓库或者手动下载脚本。需要提醒的是：所有的环境都在<strong>Python 3</strong>上执行，因此，根据您的设置，您可能不得不使用下面的<strong>python 3</strong>来<strong>替换</strong>python。下面的所有命令都假设您在CPU上运行。如果你有一个可用的<code>GPU</code>，你可以简单地移除使用指令<code>--use-cpu</code>。</p><h4 id="生成数据"><a href="#生成数据" class="headerlink" title="生成数据"></a>生成数据</h4><p>作为第一步，我们将生成一个由随机数字序列组成的合成数据集。然后将这些序列分割为不相交的训练集和开发集。运行以下命令创建数据集:</p><blockquote><p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/docs/tutorials/seqcopy/genseqcopy.py" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/docs/tutorials/seqcopy/genseqcopy.py</a></p><p>python genseqcopy.py     # 生成数据</p></blockquote><p>当运行脚本后，你会返现在<code>data/</code>文件夹下有一个训练集（<code>train.source</code>, <code>train.target</code>）和一个开发集（<code>dev.source</code>, <code>dev.target</code>）。产生的序列类似于下面数据：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2 3 5 5 4 6 7 0 3 8 10 9 3 6</span><br><span class="line">9 9 1 5 3 0 5 4 0 8 8 5 7 7 8 7 3 1 0</span><br><span class="line">9 1 9 7 9 1 9 9 9 3 9 3 2 8 0 1 6 10 4 3 1 9 2 7 1 5 7 7 5 5</span><br><span class="line">2 1 4 10 7 7 7 2 10 9 4 9 9 7 8 4 10 6 8 2 6 7 5 3 2</span><br><span class="line">4 6 0 7 8 8 6 3 4 10 2 10 6 9 5 3</span><br><span class="line">8 0 5 4 1 8 0 8 7 4 4 0 0 9 5 8 9</span><br></pre></td></tr></table></figure><h4 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h4><p>现在我们有了一些训练数据，我们可以训练我们的模型。通过以下命令开始我们的训练：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">python3 -m sockeye.train -s data/train.source \</span><br><span class="line">                         -t data/train.target \</span><br><span class="line">                         -vs data/dev.source \</span><br><span class="line">                         -vt data/dev.target \</span><br><span class="line">                         --encoder rnn --decoder rnn \</span><br><span class="line">                         --num-layers <span class="number">1</span>:<span class="number">1</span> \</span><br><span class="line">                         --num-embed <span class="number">32</span> \</span><br><span class="line">                         --rnn-num-hidden <span class="number">64</span> \</span><br><span class="line">                         --rnn-attention-type dot \</span><br><span class="line">                         --use-cpu \</span><br><span class="line">                         --metrics perplexity accuracy \</span><br><span class="line">                         --max-num-checkpoint-<span class="keyword">not</span>-improved <span class="number">3</span> \</span><br><span class="line">                         -o seqcopy_model</span><br></pre></td></tr></table></figure><p>这将训练一个1层的<code>RNN</code>模型，<code>双向LSTM</code>作为编码器，<code>单向LSTM</code>作为解码器。<code>RNN</code>有64个隐藏层单元，我们学习的嵌入大小32。查看日志，我们可以看到我们的训练数据是根据桶的长度分配的。此外，<code>Sockeye</code>将负责正确填充序列和屏蔽网络的相关部分，以处理可变长度的序列。</p><h5 id="指标和检查点"><a href="#指标和检查点" class="headerlink" title="指标和检查点"></a>指标和检查点</h5><p>在培训期间，<code>Sockeye</code>将打印训练和验证数据的相关指标。指标可以通过使用<code>--metrics</code>参数。每次创建检查点时都要评估验证指标。在检查点期间，当前的模型参数被保存到模型目录中，并对当前的验证分数进行评估。默认情况下，<code>Sockeye</code>将每1000次更新创建一个检查点。这可以通过<code>--checkpoint-interval</code>参数进行调整。</p><p>从日志中可以看出，最初的精度在0.1左右:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">[INFO:sockeye.training] Training started.</span><br><span class="line">[INFO:sockeye.callback] Early stopping by optimizing &apos;perplexity&apos;</span><br><span class="line">[INFO:root] Epoch[0] Batch [50]  Speed: 683.23 samples/sec perplexity=14.104128 accuracy=0.092011</span><br><span class="line">[INFO:root] Epoch[0] Batch [100] Speed: 849.97 samples/sec perplexity=13.036482 accuracy=0.096760</span><br><span class="line">...</span><br></pre></td></tr></table></figure><p>对于大小为10的词汇表，这基本上意味着模型是随机猜测的。随着训练的进展，我们看到在14个epochs之后，<code>accuracy</code>上升到<del>1.0，<code>perplexity</code>下降到</del>1.0。<code>Sockeye</code>根据检查点跟踪的验证指标执行早期停止。一旦几个检查点的验证指标没有改善，培训就会停止。可以调整容忍的没有改进的检查点的数量(<code>--max-num-checkpoint-not-improved</code>)。</p><h5 id="训练好的模型"><a href="#训练好的模型" class="headerlink" title="训练好的模型"></a>训练好的模型</h5><p>可以在<code>seqcopy_model</code>文件夹中找到经过训练的模型。该文件夹包含训练后运行模型所需的所有内容。许多重要的<code>params.best</code>包含具有最佳验证分数的参数。在训练中，<code>params.best</code>将不断更新，以指向当前的最佳参数。这意味着即使模型仍在训练中，您也可以使用model文件夹进行翻译，如下一节所述。所有其他参数都可以在名为<code>param.$NUM_CHECKPOINT</code>的文件中找到。<code>config</code>中包含所有的模型参数以及对训练期间使用的数据集的引用。<code>version</code> 参考用于训练的<code>Sockeye</code>版本，以检查与用于解码的版本的潜在兼容性问题。</p><p>另外，我们保留了您在<code>标准输出</code>上看到的打印日志的副本。源词汇表和目标词汇表存储在<code>vocab.src.json</code>和 <code>vocab.trg.json</code>中。如果你打开这个文件，你可以看到除了数字之外，<code>Sockeye</code>还添加了一些特殊的符号来表示句子的边界、未知的单词和填充符号。</p><h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo &quot;7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0&quot; | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu</span><br><span class="line"></span><br><span class="line">        7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0</span><br></pre></td></tr></table></figure><p>注意，该模型是在10到30个字符之间的序列上训练的。因此，对于长度小于10个字符的序列，模型很可能会遇到一些困难。默认情况下，<code>Sockeye</code>将阅读标注输入中的句子并在标准输出上打印翻译。</p><p>在内部，<code>Sockeye</code>将运行一个波束搜索，以便(近似地)找到概率最高的译文。</p><p>除了使用具有最佳验证分数的参数外，我们还可以使用其他使用<code>-c</code>参数的检查点，在模型收敛之前的训练中使用检查点:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo &quot;7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0&quot; | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu -c 3</span><br><span class="line"></span><br><span class="line">        7 6 7 7 10 2 0 8 0 5 7 0 7 3 5 6 0 0 2 0 10</span><br></pre></td></tr></table></figure><p>由于模型还没有收敛，所以在复制序列时仍然会犯一些错误。</p>]]></content>
     
@@ -37,36 +93,7 @@
     
       <category term="tutorials" scheme="http://blog.chenjf.cf/tags/tutorials/"/>
     
-  </entry>
-  
-  <entry>
-    <title>亚马逊机器翻译框架-训练说明文档(0)</title>
-    <link href="http://blog.chenjf.cf/2019/11/22/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/"/>
-    <id>http://blog.chenjf.cf/2019/11/22/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/</id>
-    <published>2019-11-22T01:27:10.000Z</published>
-    <updated>2019-11-22T02:10:16.835Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Setup-amp-Installation"><a href="#Setup-amp-Installation" class="headerlink" title="Setup &amp; Installation"></a>Setup &amp; Installation</h3><h4 id="依存关系"><a href="#依存关系" class="headerlink" title="依存关系"></a>依存关系</h4><p><code>Sockeye</code>所需要的环境：</p><ul><li><strong>Python3</strong></li><li>MXNet</li><li>numpy</li></ul><h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>下面有几个有关<code>Sockeye</code>和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。</p><a id="more"></a><p>-&gt; <strong>via pip</strong></p><p>最简单的方式是使用pip:</p><blockquote><p>pip install sockeye</p></blockquote><p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p><blockquote><p> wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p><p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p><p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><p>-&gt; <strong>via source…</strong></p><p>如果你只想使用sockeye而不扩展它，只需通过安装它即可：</p><blockquote><p>pip install -r requirements/requirements.txt</p><p>pip install .</p></blockquote><p>从github的仓库中克隆过来以后。</p><p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p><blockquote><p>pip install -r requirements/requirements.gpu-cu${CUDA_VERSION}.txt</p><p>pip install .</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><p>开发人员最好将<code>$PYTHONPATH</code>指向git克隆源的根目录。</p><p>-&gt; 利用anaconda环境，其中，<code>anaconda</code>包含了conda、Python等180个多个科学包及依赖项。用户只需要运行以下行来安装sockeye(在一个没有GPU的实例上):</p><blockquote><p>conda create -n sockeye python=3.6 // 创建一个虚拟环境 sockeye</p><p>source activate sockeye     //激活环境</p><p>pip install sockeye –no-deps  //安装sockeye</p></blockquote><p>在使用GPU的实例上，下面的命令如下执行：</p><blockquote><p>conda create -n sockeye python=3.6</p><p>source activate sockeye</p><p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p><p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p><p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><h4 id="可选择的依赖关系"><a href="#可选择的依赖关系" class="headerlink" title="可选择的依赖关系"></a>可选择的依赖关系</h4><p>你可以安装Tensorboard来对训练过程可视化，您可以选择安装mxboard（<code>pip install mxboard</code>）。为了可视化过程，运行Tensorboard工具（<code>pip install tensorboard tensorflow</code>）日志目录指向训练输出文件夹：<code>tensorboard --logdir &lt;model&gt;</code>。</p><p>如果要创建对齐图，需要安装matplotlib（pip install matplotlib）。</p><h4 id="Running-sockeye"><a href="#Running-sockeye" class="headerlink" title="Running sockeye"></a>Running sockeye</h4><p>安装之后，可以使用诸如sockeye-train、sockeye-translate、sockeye-average和sockeye-embeddings之类的命令行工具。下面举例：</p><blockquote><p>sockeye-train <args></p></blockquote><p>同样，如果sockeye目录在$PYTHONPATH上，则可以直接运行模块:</p><blockquote><p>python -m sockeye.train <args></p></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;Setup-amp-Installation&quot;&gt;&lt;a href=&quot;#Setup-amp-Installation&quot; class=&quot;headerlink&quot; title=&quot;Setup &amp;amp; Installation&quot;&gt;&lt;/a&gt;Setup &amp;amp; Installation&lt;/h3&gt;&lt;h4 id=&quot;依存关系&quot;&gt;&lt;a href=&quot;#依存关系&quot; class=&quot;headerlink&quot; title=&quot;依存关系&quot;&gt;&lt;/a&gt;依存关系&lt;/h4&gt;&lt;p&gt;&lt;code&gt;Sockeye&lt;/code&gt;所需要的环境：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Python3&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;MXNet&lt;/li&gt;
-&lt;li&gt;numpy&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h4&gt;&lt;p&gt;下面有几个有关&lt;code&gt;Sockeye&lt;/code&gt;和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="机器翻译" scheme="http://blog.chenjf.cf/categories/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/"/>
-    
-    
-      <category term="AI" scheme="http://blog.chenjf.cf/tags/AI/"/>
-    
-      <category term="machine translate" scheme="http://blog.chenjf.cf/tags/machine-translate/"/>
+      <category term="example" scheme="http://blog.chenjf.cf/tags/example/"/>
     
   </entry>
   
@@ -150,6 +177,37 @@
       <category term="随笔" scheme="http://blog.chenjf.cf/tags/%E9%9A%8F%E7%AC%94/"/>
     
       <category term="linux" scheme="http://blog.chenjf.cf/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>亚马逊机器翻译框架-训练说明文档(0)</title>
+    <link href="http://blog.chenjf.cf/2019/11/18/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/"/>
+    <id>http://blog.chenjf.cf/2019/11/18/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3-3/</id>
+    <published>2019-11-18T01:27:10.000Z</published>
+    <updated>2019-11-26T06:09:04.958Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Setup-amp-Installation"><a href="#Setup-amp-Installation" class="headerlink" title="Setup &amp; Installation"></a>Setup &amp; Installation</h3><h4 id="依存关系"><a href="#依存关系" class="headerlink" title="依存关系"></a>依存关系</h4><p><code>Sockeye</code>所需要的环境：</p><ul><li><strong>Python3</strong></li><li>MXNet</li><li>numpy</li></ul><h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><p>下面有几个有关<code>Sockeye</code>和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。</p><a id="more"></a><p>-&gt; <strong>via pip</strong></p><p>最简单的方式是使用pip:</p><blockquote><p>pip install sockeye</p></blockquote><p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p><blockquote><p> wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p><p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p><p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><p>-&gt; <strong>via source…</strong></p><p>如果你只想使用sockeye而不扩展它，只需通过安装它即可：</p><blockquote><p>pip install -r requirements/requirements.txt</p><p>pip install .</p></blockquote><p>从github的仓库中克隆过来以后。</p><p>如果你想在GPU上运行sockeye，你需要确保你的Apache MXNet孵化版本包含了GPU绑定。根据你的CUDA版本，你可以运行以下命令:</p><blockquote><p>pip install -r requirements/requirements.gpu-cu${CUDA_VERSION}.txt</p><p>pip install .</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><p>开发人员最好将<code>$PYTHONPATH</code>指向git克隆源的根目录。</p><p>-&gt; 利用anaconda环境，其中，<code>anaconda</code>包含了conda、Python等180个多个科学包及依赖项。用户只需要运行以下行来安装sockeye(在一个没有GPU的实例上):</p><blockquote><p>conda create -n sockeye python=3.6 // 创建一个虚拟环境 sockeye</p><p>source activate sockeye     //激活环境</p><p>pip install sockeye –no-deps  //安装sockeye</p></blockquote><p>在使用GPU的实例上，下面的命令如下执行：</p><blockquote><p>conda create -n sockeye python=3.6</p><p>source activate sockeye</p><p>wget <a href="https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt" target="_blank" rel="noopener">https://raw.githubusercontent.com/awslabs/sockeye/master/requirements/requirements.gpu-cu${CUDA_VERSION}.txt</a></p><p>pip install sockeye –no-deps -r requirements.gpu-cu${CUDA_VERSION}.txt</p><p>rm requirements.gpu-cu${CUDA_VERSION}.txt</p></blockquote><p>其中，<strong>${CUDA_VERSION}</strong>可以被写成80(8.0)，90 (9.0), 92 (9.2), or 100 (10.0).分别对应的是CUDA的版本。</p><h4 id="可选择的依赖关系"><a href="#可选择的依赖关系" class="headerlink" title="可选择的依赖关系"></a>可选择的依赖关系</h4><p>你可以安装Tensorboard来对训练过程可视化，您可以选择安装mxboard（<code>pip install mxboard</code>）。为了可视化过程，运行Tensorboard工具（<code>pip install tensorboard tensorflow</code>）日志目录指向训练输出文件夹：<code>tensorboard --logdir &lt;model&gt;</code>。</p><p>如果要创建对齐图，需要安装matplotlib（pip install matplotlib）。</p><h4 id="Running-sockeye"><a href="#Running-sockeye" class="headerlink" title="Running sockeye"></a>Running sockeye</h4><p>安装之后，可以使用诸如sockeye-train、sockeye-translate、sockeye-average和sockeye-embeddings之类的命令行工具。下面举例：</p><blockquote><p>sockeye-train <args></p></blockquote><p>同样，如果sockeye目录在$PYTHONPATH上，则可以直接运行模块:</p><blockquote><p>python -m sockeye.train <args></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Setup-amp-Installation&quot;&gt;&lt;a href=&quot;#Setup-amp-Installation&quot; class=&quot;headerlink&quot; title=&quot;Setup &amp;amp; Installation&quot;&gt;&lt;/a&gt;Setup &amp;amp; Installation&lt;/h3&gt;&lt;h4 id=&quot;依存关系&quot;&gt;&lt;a href=&quot;#依存关系&quot; class=&quot;headerlink&quot; title=&quot;依存关系&quot;&gt;&lt;/a&gt;依存关系&lt;/h4&gt;&lt;p&gt;&lt;code&gt;Sockeye&lt;/code&gt;所需要的环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Python3&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;MXNet&lt;/li&gt;
+&lt;li&gt;numpy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;Installation&quot;&gt;&lt;a href=&quot;#Installation&quot; class=&quot;headerlink&quot; title=&quot;Installation&quot;&gt;&lt;/a&gt;Installation&lt;/h4&gt;&lt;p&gt;下面有几个有关&lt;code&gt;Sockeye&lt;/code&gt;和他的依存关系安装选项。下面我们会罗列出几个备选方案，和一些相关的说明。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="机器翻译" scheme="http://blog.chenjf.cf/categories/%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91/"/>
+    
+    
+      <category term="AI" scheme="http://blog.chenjf.cf/tags/AI/"/>
+    
+      <category term="machine translate" scheme="http://blog.chenjf.cf/tags/machine-translate/"/>
     
   </entry>
   
