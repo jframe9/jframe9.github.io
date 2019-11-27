@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>随笔-随便 写点东西</title>
+    <url>/2019/11/27/suibi/</url>
+    <content><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote>
+<p><strong>语法糖</strong></p>
+</blockquote>
+<p>指计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是<u>更方便程序员</u>使用。通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。</p>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>随心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>report review</title>
     <url>/2019/11/26/report-review/</url>
     <content><![CDATA[<h3 id="怎么写Literature-review-文献综述"><a href="#怎么写Literature-review-文献综述" class="headerlink" title="怎么写Literature review(文献综述)?"></a>怎么写Literature review(文献综述)?</h3><blockquote>
@@ -80,7 +96,41 @@
 
 <p>训练使用的是1层的双向LSTM模型来编码，带有一层的点在注意力机制来解码。<code>Sockeye</code>提供了关于模型架构的不同选项，例如：残差网络堆叠RNN（<code>--num-layers</code>, <code>--rnn-residual-connections</code>），<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">ransformer</a>编码和解码（<code>--encoder transformer</code>, <code>--decoder transformer</code>），<a href="https://arxiv.org/pdf/1705.03122" target="_blank" rel="noopener">ConvS2S</a>(<code>--encoder cnn</code>, <code>--decoder cnn</code>),各种RNN（<code>--rnn-cell-type</code>）以及注意力机制的类型（<code>--attention-type</code>）等等。</p>
 <p>模型中还包含有几个参数用来控制训练过程本身，除非你指定一个不同的优化器（<code>--optimizer</code>）,否则将使用Adam。此外，你可以控制批次大小（<code>--batch-size</code>）,lr schedule(–learning-rate-schedule),和其他与训练相关的参数。</p>
-<p>训练将持续进行，直到验证的复杂性停止改善。<code>Sockeye</code>在与训练相同的设备上运行的每个检查点上，在单独的进程中启动一个解码器，以评估诸如<code>BLEU</code>之类的指标。</p>
+<p>训练将持续进行，直到验证的复杂性停止改善。<code>Sockeye</code>在与训练相同的设备上运行的每个检查点上，在单独的进程中启动一个解码器，以评估诸如<code>BLEU</code>之类的指标。需要注意的是，在块上，分数被计算出来，然后提供给<code>Sockeye</code>，例如：在本教程中，<code>BLEU</code>将根据我们在上面创建的子单词进行计算。作为验证的另一种基于复杂度的早期停止，你可以根据<code>BLEU</code>评分提前停止（<code>--optimized-metric bleu</code>）。</p>
+<p>为了确保解码器在下一个检查点之前完成，可以对<code>BLEU</code>分数计算的验证集进行子采样。例如： <code>--decode-and-evaluate 500</code> 将会解码并且评估<code>BLEU</code>在一个随机500的子序列上。我们对随机子集抽样一次，并在训练期间和跨训练期间通过固定随机种子保持它不变。因此，验证<code>BLEU</code>在训练中的得分是可比较的。复杂度(Perplexity)不受此影响，仍然在完整的验证集上计算。</p>
+<p>在这个数据集上训练数据需要一段时间。下一部分我们将会讲解你如何能够监控训练进程。</p>
+<h5 id="Monitoring-training-progress"><a href="#Monitoring-training-progress" class="headerlink" title="Monitoring training progress"></a>Monitoring training progress</h5><p>下边有三种方式用来跟踪训练进程：通过训练日志和日志文件、一些标准文件、还有<code>Tensorboard</code>。除了在标准输出（<code>stdout</code>）上打印培训和验证指标之外，<code>Sockeye</code>也通过文件<code>wmt_model/metrics</code>来跟踪他们。在哪里你可以找到所有在<code>checkpointing</code>期间计算的相关的指标。</p>
+<p><code>Tensorboard</code>通过浏览器监控训练指标和验证指标。如果你安装了<code>mxboard</code>,<code>Scokeye</code>将会将训练进行以日志格式存放在<code>Tensorboard</code>文件夹中，这个文件夹可以再<code>Tensorboard</code>中可视化。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">tensorboard --logdir .</span><br></pre></td></tr></table></figure>
+
+<p>Once tensorboard is up and running you can check out the learning curves by opening <a href="http://localhost:6006" target="_blank" rel="noopener">http://localhost:6006</a>.</p>
+<p><img src="/images/photo/tensorboard.png" alt="tensorboard"></p>
+<p>现在，甚至在培训结束之前，如果至少有一个检查点被写到磁盘上，您就已经可以开始使用模型进行转换了。</p>
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>当使用<code>Sockeye</code>进行翻译时，重要的是要记住它期望的输入类型与训练期间看到的输入类型相同。在这份教程中，我们输入的是子词单元，这些单元通过字节对编码获得。因此，因此，我们需要在将一个句子输入到<code>Sockeye</code>之前，应用相同类型的预处理。所有在训练中没有看到的符号将被替换为<unk>符号。当在训练过程中观察到<unk>符号时，模型也会在输出中产生这个符号。注意，由于我们使用上面的<code>BPE</code>进行预处理的方式，模型实际上不会观察到任何<unk>符号。在下面的示例中，我们将使用来自开发集的一个语句，该语句已经被标记，字节对对其进行编码。翻译之后，我们合并连续的字节对，产生一个标记化的翻译句子。这可以通过以下命令完成:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>在解码期间，<code>Sockeye</code>将会运行一个波束搜索。你可以设置波束的大小（<code>--beam-size</code>）或者改变其他编码参数，例如：<code>--softmax-temperature</code>和<code>--length-penalty-alpha</code></p>
+<h5 id="Alignment-visualization"><a href="#Alignment-visualization" class="headerlink" title="Alignment visualization"></a>Alignment visualization</h5><p><code>Sockeye</code>不仅提供文本输出，也可以有其他类型的输出。下述命令将会实例对齐矩阵。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model --output-type align_plot</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个文件align_1.png，看起来像这样:</p>
+<p><img src="/images/photo/align.png" alt="align"></p>
+<p>注意，对齐图显示的是子单词单位，而不是标记，因为这是<code>Sockeye</code>在翻译期间使用的表示。此外，您可以看到特殊的句尾符号</s>被添加到目标句中。</p>
+<h5 id="Embedding-inspection"><a href="#Embedding-inspection" class="headerlink" title="Embedding inspection"></a>Embedding inspection</h5><p>您可以检查模型在培训期间学到的嵌入。<code>Sockeye</code>包含一个工具，用于计算嵌入空间中所有类型的成对相似性(欧几里德距离)。给定一个查询标记，它将返回空间中最近的邻居。你可以这样运行它:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">echo <span class="string">"haus"</span> | python3 -m sockeye.embeddings -m wmt_model -s source</span><br><span class="line">[INFO:__main__] Arguments: Namespace(checkpoint=<span class="literal">None</span>, gamma=<span class="number">1.0</span>, k=<span class="number">5</span>, model=<span class="string">'wmt_model'</span>, norm=<span class="literal">False</span>, side=<span class="string">'source'</span>)</span><br><span class="line">Input: haus</span><br><span class="line">haus id=<span class="number">35</span></span><br><span class="line">  gebaeude id=<span class="number">68</span> sim=<span class="number">0.8498</span></span><br><span class="line">  Haus id=<span class="number">1759</span> sim=<span class="number">0.1441</span></span><br><span class="line">  hauser id=<span class="number">295</span> sim=<span class="number">0.0049</span></span><br></pre></td></tr></table></figure>
+
+<p>(你自己的输出可能看起来不一样)</p>
+<h5 id="Model-ensembling"><a href="#Model-ensembling" class="headerlink" title="Model ensembling"></a>Model ensembling</h5><p>深度学习模型通常从模型集成中获益。在模型集成中，我们用不同的种子训练多个模型（<code>Sockeye</code>有一个参数<code>--seed</code>）。然后我们就可以把这些模型提供给<code>Sockeye</code> translation <code>CLI</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model wmt_model_seed2 wmt_model_seed3 <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>由于我们还没有训练多个模型，我们可以简单地在同一个模型中输入多次:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model wmt_model wmt_model <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>在内部，<code>Sockeye</code>将运行每个模型并结合预测。如果所有的模型都是相同的，你当然会得到相同的预测，代价是多次运行相同的模型。<strong>然而，重点主要是展示如何运行集成模型。</strong></p>
+<h4 id="Checkpoint-averaging"><a href="#Checkpoint-averaging" class="headerlink" title="Checkpoint averaging"></a>Checkpoint averaging</h4><p>不需要训练多个模型的模型集成的另一种方法是从不同的检查点平均参数。虽然集成基本上是免费的，但这通常会导致较小的收益。当然，您也可以创建一个检查点平均模型的集合。<code>Sockeye</code>提供了一个<code>CLI</code>，它组合了训练模型的参数文件。在下面，我们创建一个模型目录的副本，然后用一个平均参数检查点文件替换到最佳参数的链接:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cp -r wmt_model wmt_model_avg</span><br><span class="line">python -m sockeye.average -o wmt_model_avg/param.best wmt_model</span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Congratulations! You have successfully trained your first real Sockeye translation model. On top of that you know how to track training progress, how to translate, how to combine models through checkpointing or ensembling and more.</p>
 ]]></content>
       <categories>
         <category>机器翻译</category>
@@ -91,7 +141,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Step-by-step tutorials</title>
+    <title>Sequence copy task</title>
     <url>/2019/11/22/tutorials/</url>
     <content><![CDATA[<h3 id="Sequence-copy-task"><a href="#Sequence-copy-task" class="headerlink" title="Sequence copy task"></a>Sequence copy task</h3><p>这篇教程将会向你展示<code>Sockeye</code>在一些简单任务上简单应用：复制一个序列。我们将生成由可变长度的数字组成的序列。然后，任务是训练一个模型，该模型将序列从源复制到目标。这个任务一方面非常困难，足够有趣，另一方面可以快速地训练一个模型。</p>
 <a id="more"></a>
@@ -113,15 +163,15 @@
 <p>从日志中可以看出，最初的精度在0.1左右:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">[INFO:sockeye.training] Training started.</span><br><span class="line">[INFO:sockeye.callback] Early stopping by optimizing &apos;perplexity&apos;</span><br><span class="line">[INFO:root] Epoch[0] Batch [50]  Speed: 683.23 samples/sec perplexity=14.104128 accuracy=0.092011</span><br><span class="line">[INFO:root] Epoch[0] Batch [100] Speed: 849.97 samples/sec perplexity=13.036482 accuracy=0.096760</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
-<p>对于大小为10的词汇表，这基本上意味着模型是随机猜测的。随着训练的进展，我们看到在14个epochs之后，<code>accuracy</code>上升到<del>1.0，<code>perplexity</code>下降到</del>1.0。<code>Sockeye</code>根据检查点跟踪的验证指标执行早期停止。一旦几个检查点的验证指标没有改善，训练就会停止。可以调整容忍的没有改进的检查点的数量(<code>--max-num-checkpoint-not-improved</code>)。</p>
+<p>对于大小为10的词汇表，这基本上意味着模型是随机猜测的。随着训练的进展，我们看到在14个epochs之后，<code>accuracy</code>上升到~1.0，<code>perplexity</code>下降到 ~ 1.0。<code>Sockeye</code>根据检查点跟踪的验证指标执行早期停止。一旦几个检查点的验证指标没有改善，训练就会停止。可以调整容忍的没有改进的检查点的数量(<code>--max-num-checkpoint-not-improved</code>)。</p>
 <h5 id="训练好的模型"><a href="#训练好的模型" class="headerlink" title="训练好的模型"></a>训练好的模型</h5><p>可以在<code>seqcopy_model</code>文件夹中找到经过训练的模型。该文件夹包含训练后运行模型所需的所有内容。许多重要的<code>params.best</code>包含具有最佳验证分数的参数。在训练中，<code>params.best</code>将不断更新，以指向当前的最佳参数。这意味着即使模型仍在训练中，您也可以使用model文件夹进行翻译，如下一节所述。所有其他参数都可以在名为<code>param.$NUM_CHECKPOINT</code>的文件中找到。<code>config</code>中包含所有的模型参数以及对训练期间使用的数据集的引用。<code>version</code> 参考用于训练的<code>Sockeye</code>版本，以检查与用于解码的版本的潜在兼容性问题。</p>
 <p>另外，我们保留了您在<code>标准输出</code>上看到的打印日志的副本。源词汇表和目标词汇表存储在<code>vocab.src.json</code>和 <code>vocab.trg.json</code>中。如果你打开这个文件，你可以看到除了数字之外，<code>Sockeye</code>还添加了一些特殊的符号来表示句子的边界、未知的单词和填充符号。</p>
-<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; echo &quot;7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0&quot; | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu</span><br><span class="line"></span><br><span class="line">        7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0</span><br></pre></td></tr></table></figure>
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; echo <span class="string">"7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0"</span> | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu</span><br><span class="line"></span><br><span class="line">        <span class="number">7</span> <span class="number">6</span> <span class="number">7</span> <span class="number">7</span> <span class="number">10</span> <span class="number">2</span> <span class="number">0</span> <span class="number">8</span> <span class="number">0</span> <span class="number">5</span> <span class="number">7</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">4</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">10</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p>注意，该模型是在10到30个字符之间的序列上训练的。因此，对于长度小于10个字符的序列，模型很可能会遇到一些困难。默认情况下，<code>Sockeye</code>将阅读标注输入中的句子并在标准输出上打印翻译。</p>
 <p>在内部，<code>Sockeye</code>将运行一个波束搜索，以便(近似地)找到概率最高的译文。</p>
 <p>除了使用具有最佳验证分数的参数外，我们还可以使用其他使用<code>-c</code>参数的检查点，在模型收敛之前的训练中使用检查点:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; echo &quot;7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0&quot; | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu -c 3</span><br><span class="line"></span><br><span class="line">        7 6 7 7 10 2 0 8 0 5 7 0 7 3 5 6 0 0 2 0 10</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; echo <span class="string">"7 6 7 7 10 2 0 8 0 5 7 3 5 6 4 0 0 2 10 0"</span> | \</span><br><span class="line">  python -m sockeye.translate -m seqcopy_model --use-cpu -c <span class="number">3</span></span><br><span class="line"></span><br><span class="line">        <span class="number">7</span> <span class="number">6</span> <span class="number">7</span> <span class="number">7</span> <span class="number">10</span> <span class="number">2</span> <span class="number">0</span> <span class="number">8</span> <span class="number">0</span> <span class="number">5</span> <span class="number">7</span> <span class="number">0</span> <span class="number">7</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">0</span> <span class="number">0</span> <span class="number">2</span> <span class="number">0</span> <span class="number">10</span></span><br></pre></td></tr></table></figure>
 
 <p>由于模型还没有收敛，所以在复制序列时仍然会犯一些错误。</p>
 ]]></content>
@@ -373,8 +423,8 @@
         <category>指令</category>
       </categories>
       <tags>
-        <tag>conda</tag>
         <tag>随笔</tag>
+        <tag>conda</tag>
         <tag>linux</tag>
       </tags>
   </entry>

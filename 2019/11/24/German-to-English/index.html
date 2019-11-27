@@ -65,8 +65,11 @@
 <meta property="og:site_name" content="Jfchen&#39;s blog">
 <meta property="og:description" content="德语译英语在这份教程中，我们将会在数据集上训练一个德语-&amp;gt;英语的Sockeye机器翻译模型。（数据集是2017年WNT）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T11:15:05.548Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;blog.chenjf.cf&#x2F;images&#x2F;photo&#x2F;tensorboard.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;blog.chenjf.cf&#x2F;images&#x2F;photo&#x2F;align.png">
+<meta property="og:updated_time" content="2019-11-27T09:00:07.166Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;blog.chenjf.cf&#x2F;images&#x2F;photo&#x2F;tensorboard.png">
   <link rel="alternate" href="/atom.xml" title="Jfchen's blog" type="application/atom+xml">
   <link rel="canonical" href="http://blog.chenjf.cf/2019/11/24/German-to-English/">
 
@@ -291,7 +294,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-26 19:15:05" itemprop="dateModified" datetime="2019-11-26T19:15:05+08:00">2019-11-26</time>
+                <time title="修改时间：2019-11-27 17:00:07" itemprop="dateModified" datetime="2019-11-27T17:00:07+08:00">2019-11-27</time>
               </span>
             
           
@@ -395,7 +398,41 @@
 
 <p>训练使用的是1层的双向LSTM模型来编码，带有一层的点在注意力机制来解码。<code>Sockeye</code>提供了关于模型架构的不同选项，例如：残差网络堆叠RNN（<code>--num-layers</code>, <code>--rnn-residual-connections</code>），<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">ransformer</a>编码和解码（<code>--encoder transformer</code>, <code>--decoder transformer</code>），<a href="https://arxiv.org/pdf/1705.03122" target="_blank" rel="noopener">ConvS2S</a>(<code>--encoder cnn</code>, <code>--decoder cnn</code>),各种RNN（<code>--rnn-cell-type</code>）以及注意力机制的类型（<code>--attention-type</code>）等等。</p>
 <p>模型中还包含有几个参数用来控制训练过程本身，除非你指定一个不同的优化器（<code>--optimizer</code>）,否则将使用Adam。此外，你可以控制批次大小（<code>--batch-size</code>）,lr schedule(–learning-rate-schedule),和其他与训练相关的参数。</p>
-<p>训练将持续进行，直到验证的复杂性停止改善。<code>Sockeye</code>在与训练相同的设备上运行的每个检查点上，在单独的进程中启动一个解码器，以评估诸如<code>BLEU</code>之类的指标。</p>
+<p>训练将持续进行，直到验证的复杂性停止改善。<code>Sockeye</code>在与训练相同的设备上运行的每个检查点上，在单独的进程中启动一个解码器，以评估诸如<code>BLEU</code>之类的指标。需要注意的是，在块上，分数被计算出来，然后提供给<code>Sockeye</code>，例如：在本教程中，<code>BLEU</code>将根据我们在上面创建的子单词进行计算。作为验证的另一种基于复杂度的早期停止，你可以根据<code>BLEU</code>评分提前停止（<code>--optimized-metric bleu</code>）。</p>
+<p>为了确保解码器在下一个检查点之前完成，可以对<code>BLEU</code>分数计算的验证集进行子采样。例如： <code>--decode-and-evaluate 500</code> 将会解码并且评估<code>BLEU</code>在一个随机500的子序列上。我们对随机子集抽样一次，并在训练期间和跨训练期间通过固定随机种子保持它不变。因此，验证<code>BLEU</code>在训练中的得分是可比较的。复杂度(Perplexity)不受此影响，仍然在完整的验证集上计算。</p>
+<p>在这个数据集上训练数据需要一段时间。下一部分我们将会讲解你如何能够监控训练进程。</p>
+<h5 id="Monitoring-training-progress"><a href="#Monitoring-training-progress" class="headerlink" title="Monitoring training progress"></a>Monitoring training progress</h5><p>下边有三种方式用来跟踪训练进程：通过训练日志和日志文件、一些标准文件、还有<code>Tensorboard</code>。除了在标准输出（<code>stdout</code>）上打印培训和验证指标之外，<code>Sockeye</code>也通过文件<code>wmt_model/metrics</code>来跟踪他们。在哪里你可以找到所有在<code>checkpointing</code>期间计算的相关的指标。</p>
+<p><code>Tensorboard</code>通过浏览器监控训练指标和验证指标。如果你安装了<code>mxboard</code>,<code>Scokeye</code>将会将训练进行以日志格式存放在<code>Tensorboard</code>文件夹中，这个文件夹可以再<code>Tensorboard</code>中可视化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --logdir .</span><br></pre></td></tr></table></figure>
+
+<p>Once tensorboard is up and running you can check out the learning curves by opening <a href="http://localhost:6006" target="_blank" rel="noopener">http://localhost:6006</a>.</p>
+<p><img src="/images/photo/tensorboard.png" alt="tensorboard"></p>
+<p>现在，甚至在培训结束之前，如果至少有一个检查点被写到磁盘上，您就已经可以开始使用模型进行转换了。</p>
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>当使用<code>Sockeye</code>进行翻译时，重要的是要记住它期望的输入类型与训练期间看到的输入类型相同。在这份教程中，我们输入的是子词单元，这些单元通过字节对编码获得。因此，因此，我们需要在将一个句子输入到<code>Sockeye</code>之前，应用相同类型的预处理。所有在训练中没有看到的符号将被替换为<unk>符号。当在训练过程中观察到<unk>符号时，模型也会在输出中产生这个符号。注意，由于我们使用上面的<code>BPE</code>进行预处理的方式，模型实际上不会观察到任何<unk>符号。在下面的示例中，我们将使用来自开发集的一个语句，该语句已经被标记，字节对对其进行编码。翻译之后，我们合并连续的字节对，产生一个标记化的翻译句子。这可以通过以下命令完成:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>在解码期间，<code>Sockeye</code>将会运行一个波束搜索。你可以设置波束的大小（<code>--beam-size</code>）或者改变其他编码参数，例如：<code>--softmax-temperature</code>和<code>--length-penalty-alpha</code></p>
+<h5 id="Alignment-visualization"><a href="#Alignment-visualization" class="headerlink" title="Alignment visualization"></a>Alignment visualization</h5><p><code>Sockeye</code>不仅提供文本输出，也可以有其他类型的输出。下述命令将会实例对齐矩阵。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model --output-type align_plot</span><br></pre></td></tr></table></figure>
+
+<p>这将创建一个文件align_1.png，看起来像这样:</p>
+<p><img src="/images/photo/align.png" alt="align"></p>
+<p>注意，对齐图显示的是子单词单位，而不是标记，因为这是<code>Sockeye</code>在翻译期间使用的表示。此外，您可以看到特殊的句尾符号</s>被添加到目标句中。</p>
+<h5 id="Embedding-inspection"><a href="#Embedding-inspection" class="headerlink" title="Embedding inspection"></a>Embedding inspection</h5><p>您可以检查模型在培训期间学到的嵌入。<code>Sockeye</code>包含一个工具，用于计算嵌入空间中所有类型的成对相似性(欧几里德距离)。给定一个查询标记，它将返回空间中最近的邻居。你可以这样运行它:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"haus"</span> | python3 -m sockeye.embeddings -m wmt_model -s source</span><br><span class="line">[INFO:__main__] Arguments: Namespace(checkpoint=<span class="literal">None</span>, gamma=<span class="number">1.0</span>, k=<span class="number">5</span>, model=<span class="string">'wmt_model'</span>, norm=<span class="literal">False</span>, side=<span class="string">'source'</span>)</span><br><span class="line">Input: haus</span><br><span class="line">haus id=<span class="number">35</span></span><br><span class="line">  gebaeude id=<span class="number">68</span> sim=<span class="number">0.8498</span></span><br><span class="line">  Haus id=<span class="number">1759</span> sim=<span class="number">0.1441</span></span><br><span class="line">  hauser id=<span class="number">295</span> sim=<span class="number">0.0049</span></span><br></pre></td></tr></table></figure>
+
+<p>(你自己的输出可能看起来不一样)</p>
+<h5 id="Model-ensembling"><a href="#Model-ensembling" class="headerlink" title="Model ensembling"></a>Model ensembling</h5><p>深度学习模型通常从模型集成中获益。在模型集成中，我们用不同的种子训练多个模型（<code>Sockeye</code>有一个参数<code>--seed</code>）。然后我们就可以把这些模型提供给<code>Sockeye</code> translation <code>CLI</code>:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model wmt_model_seed2 wmt_model_seed3 <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>由于我们还没有训练多个模型，我们可以简单地在同一个模型中输入多次:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="string">"er ist so ein toller Kerl und ein Familienvater ."</span> | \</span><br><span class="line">  python -m apply_bpe -c bpe.codes --vocabulary bpe.vocab.en \</span><br><span class="line">                                   --vocabulary-threshold <span class="number">50</span> | \</span><br><span class="line">  python -m sockeye.translate -m wmt_model wmt_model wmt_model <span class="number">2</span>&gt;/dev/null | \</span><br><span class="line">  sed -r <span class="string">'s/@@( |$)//g'</span></span><br><span class="line"></span><br><span class="line">he <span class="keyword">is</span> a great guy <span class="keyword">and</span> a family father .</span><br></pre></td></tr></table></figure>
+
+<p>在内部，<code>Sockeye</code>将运行每个模型并结合预测。如果所有的模型都是相同的，你当然会得到相同的预测，代价是多次运行相同的模型。<strong>然而，重点主要是展示如何运行集成模型。</strong></p>
+<h4 id="Checkpoint-averaging"><a href="#Checkpoint-averaging" class="headerlink" title="Checkpoint averaging"></a>Checkpoint averaging</h4><p>不需要训练多个模型的模型集成的另一种方法是从不同的检查点平均参数。虽然集成基本上是免费的，但这通常会导致较小的收益。当然，您也可以创建一个检查点平均模型的集合。<code>Sockeye</code>提供了一个<code>CLI</code>，它组合了训练模型的参数文件。在下面，我们创建一个模型目录的副本，然后用一个平均参数检查点文件替换到最佳参数的链接:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r wmt_model wmt_model_avg</span><br><span class="line">python -m sockeye.average -o wmt_model_avg/param.best wmt_model</span><br></pre></td></tr></table></figure>
+
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>Congratulations! You have successfully trained your first real Sockeye translation model. On top of that you know how to track training progress, how to translate, how to combine models through checkpointing or ensembling and more.</p>
 
     </div>
 
@@ -448,8 +485,8 @@
         </div>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-              <a href="/2019/11/22/tutorials/" rel="next" title="Step-by-step tutorials">
-                <i class="fa fa-chevron-left"></i> Step-by-step tutorials
+              <a href="/2019/11/22/tutorials/" rel="next" title="Sequence copy task">
+                <i class="fa fa-chevron-left"></i> Sequence copy task
               </a>
             
           </div>
@@ -518,7 +555,7 @@
         
           <a href="/archives">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -539,7 +576,9 @@
         
           
         
-        <span class="site-state-item-count">3</span>
+          
+        
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span>
         </a>
       </div>
@@ -572,7 +611,9 @@
         
           
         
-        <span class="site-state-item-count">9</span>
+          
+        
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span>
         </a>
       </div>
@@ -639,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#德语译英语"><span class="nav-number">1.</span> <span class="nav-text">德语译英语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置"><span class="nav-number">1.1.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPU"><span class="nav-number">1.2.</span> <span class="nav-text">GPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data（数据）"><span class="nav-number">1.3.</span> <span class="nav-text">Data（数据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Preprocessing-预处理数据"><span class="nav-number">1.4.</span> <span class="nav-text">Preprocessing(预处理数据)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training（训练）"><span class="nav-number">1.5.</span> <span class="nav-text">Training（训练）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#德语译英语"><span class="nav-number">1.</span> <span class="nav-text">德语译英语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置"><span class="nav-number">1.1.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GPU"><span class="nav-number">1.2.</span> <span class="nav-text">GPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Data（数据）"><span class="nav-number">1.3.</span> <span class="nav-text">Data（数据）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Preprocessing-预处理数据"><span class="nav-number">1.4.</span> <span class="nav-text">Preprocessing(预处理数据)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training（训练）"><span class="nav-number">1.5.</span> <span class="nav-text">Training（训练）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Monitoring-training-progress"><span class="nav-number">1.5.1.</span> <span class="nav-text">Monitoring training progress</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Translation"><span class="nav-number">1.6.</span> <span class="nav-text">Translation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Alignment-visualization"><span class="nav-number">1.6.1.</span> <span class="nav-text">Alignment visualization</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Embedding-inspection"><span class="nav-number">1.6.2.</span> <span class="nav-text">Embedding inspection</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Model-ensembling"><span class="nav-number">1.6.3.</span> <span class="nav-text">Model ensembling</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Checkpoint-averaging"><span class="nav-number">1.7.</span> <span class="nav-text">Checkpoint averaging</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">1.8.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
             
 
           </div>
