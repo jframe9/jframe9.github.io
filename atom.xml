@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.chenjf.cf/"/>
-  <updated>2019-11-27T06:21:13.891Z</updated>
+  <updated>2019-12-01T08:19:37.694Z</updated>
   <id>http://blog.chenjf.cf/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://blog.chenjf.cf/2019/11/27/suibi/"/>
     <id>http://blog.chenjf.cf/2019/11/27/suibi/</id>
     <published>2019-11-27T06:06:14.000Z</published>
-    <updated>2019-11-27T06:21:13.891Z</updated>
+    <updated>2019-12-01T08:19:37.694Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote><p><strong>语法糖</strong></p></blockquote><p>指计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是<u>更方便程序员</u>使用。通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><blockquote><p><strong>语法糖</strong></p></blockquote><p>指计算机语言中添加的某种语法，这种语法对语言的功能并没有影响，但是<u>更方便程序员</u>使用。通常来说使用语法糖能够增加程序的可读性，从而减少程序代码出错的机会。</p><blockquote><p><strong>python for…else用法</strong></p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    print(i)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'I am coming！'</span>)</span><br></pre></td></tr></table></figure><blockquote><p><em>输出：</em></p><p>0</p><p>1</p><p>I am coming！</p></blockquote><p>结论：当for循环正常结束后，会执行else中的内容。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">    <span class="keyword">break</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'Sorry,你不爱我！'</span>)</span><br></pre></td></tr></table></figure><blockquote><p><em>输出：</em></p></blockquote><p>没有输出，当for循环被打断时，else中的内容不再执行。</p><p> <strong>一旦…就….我觉得还是非常有效的。。。。</strong></p><p><a href="https://www.zhihu.com/question/35103080/answer/802025901" target="_blank" rel="noopener">https://www.zhihu.com/question/35103080/answer/802025901</a></p>]]></content>
     
     <summary type="html">
     
