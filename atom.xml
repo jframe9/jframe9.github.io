@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.chenjf.cf/"/>
-  <updated>2019-12-03T11:45:05.671Z</updated>
+  <updated>2019-12-05T06:40:57.765Z</updated>
   <id>http://blog.chenjf.cf/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PaperNotes SOCKEYE A Toolkit for Neural Machine Translation</title>
+    <link href="http://blog.chenjf.cf/2019/12/05/paper-note1/"/>
+    <id>http://blog.chenjf.cf/2019/12/05/paper-note1/</id>
+    <published>2019-12-05T06:19:52.000Z</published>
+    <updated>2019-12-05T06:40:57.765Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract:"></a><strong>Abstract:</strong></h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Abstract&quot;&gt;&lt;a href=&quot;#Abstract&quot; class=&quot;headerlink&quot; title=&quot;Abstract:&quot;&gt;&lt;/a&gt;&lt;strong&gt;Abstract:&lt;/strong&gt;&lt;/h3&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="论文阅读" scheme="http://blog.chenjf.cf/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    
+      <category term="paper" scheme="http://blog.chenjf.cf/tags/paper/"/>
+    
+      <category term="Note" scheme="http://blog.chenjf.cf/tags/Note/"/>
+    
+  </entry>
   
   <entry>
     <title>Tmux使用-常用指令</title>

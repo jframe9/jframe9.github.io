@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>PaperNotes SOCKEYE A Toolkit for Neural Machine Translation</title>
+    <url>/2019/12/05/paper-note1/</url>
+    <content><![CDATA[<h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract:"></a><strong>Abstract:</strong></h3>]]></content>
+      <categories>
+        <category>论文阅读</category>
+      </categories>
+      <tags>
+        <tag>paper</tag>
+        <tag>Note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Tmux使用-常用指令</title>
     <url>/2019/12/03/terminal-multiplexer-order/</url>
     <content><![CDATA[<h3 id="Tmux基本操作"><a href="#Tmux基本操作" class="headerlink" title="Tmux基本操作"></a>Tmux基本操作</h3><p><code>tmux</code>默认的快捷键前缀是<code>Ctrl+b</code>(下文用<strong>prefix</strong>指代)，按下前缀组合键后松开，再按下命令键进行快捷操作，比如使用<strong>prefix d</strong>分离会话（应该写作<strong>prefix d</strong>而不是<strong>prefix+d，</strong>因为<strong>d</strong>键不需要与<strong>prefix</strong>同时按下）。</p>
