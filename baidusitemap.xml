@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.chenjf.cf/2019/12/08/paper-not2/</loc>
+    <lastmod>2019-12-08</lastmod>
+  </url>  <url>
+    <loc>http://blog.chenjf.cf/2019/12/05/paper-note1/</loc>
+    <lastmod>2019-12-07</lastmod>
+  </url>  <url>
+    <loc>http://blog.chenjf.cf/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</loc>
+    <lastmod>2019-12-07</lastmod>
+  </url>  <url>
+    <loc>http://blog.chenjf.cf/2019/11/24/German-to-English/</loc>
+    <lastmod>2019-12-05</lastmod>
+  </url>  <url>
     <loc>http://blog.chenjf.cf/2019/12/03/terminal-multiplexer-order/</loc>
     <lastmod>2019-12-05</lastmod>
   </url>  <url>
     <loc>http://blog.chenjf.cf/2019/11/27/suibi/</loc>
     <lastmod>2019-12-05</lastmod>
-  </url>  <url>
-    <loc>http://blog.chenjf.cf/2019/12/05/paper-note1/</loc>
-    <lastmod>2019-12-05</lastmod>
-  </url>  <url>
-    <loc>http://blog.chenjf.cf/2019/11/24/German-to-English/</loc>
-    <lastmod>2019-11-27</lastmod>
   </url>  <url>
     <loc>http://blog.chenjf.cf/2019/11/22/tutorials/</loc>
     <lastmod>2019-11-27</lastmod>
@@ -27,8 +33,5 @@
   </url>  <url>
     <loc>http://blog.chenjf.cf/2019/11/19/%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%BA%E5%99%A8%E7%BF%BB%E8%AF%91%E6%A1%86%E6%9E%B6-%E8%AE%AD%E7%BB%83%E8%AF%B4%E6%98%8E%E6%96%87%E6%A1%A3/</loc>
     <lastmod>2019-11-21</lastmod>
-  </url>  <url>
-    <loc>http://blog.chenjf.cf/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/</loc>
-    <lastmod>2019-11-20</lastmod>
   </url>
 </urlset>

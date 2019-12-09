@@ -242,6 +242,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.chenjf.cf/2019/12/08/paper-not2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jfchen">
+      <meta itemprop="description" content="fighing gank">
+      <meta itemprop="image" content="/images/timg.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jfchen's blog">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/08/paper-not2/" class="post-title-link" itemprop="url">paper-not2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-08 21:58:43 / 修改时间：22:37:11" itemprop="dateCreated datePublished" datetime="2019-12-08T21:58:43+08:00">2019-12-08</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index"><span itemprop="name">论文阅读</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="fa fa-comment-o"></i>
+    </span>
+    
+      <span class="post-meta-item-text">评论数：</span>
+    
+  
+    <a href="/2019/12/08/paper-not2/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/08/paper-not2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+          <br>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>在基于骨骼的动作识别中，将人体骨骼建模为时空图形的图卷积网络(GCNs)取得了令人瞩目的成绩。然而，在现有的基于gcn的方法中，图的拓扑是手动设置的，它在所有层和输入样本上都是固定的。这可能不是最佳的层次GCN和不同的样本在行动识别任务。此外，骨骼数据的二阶信息(骨骼的长度和方向)对于动作识别来说自然是更有信息性和区别性的，在现有的方法中很少被研究。在这项工作中，我们提出了一种新的基于骨架的两流自适应图卷积网络(2s-AGCN)。我们的模型中的图的拓扑可以由BP算法以端到端的方式统一学习或单独学习。这种数据驱动的方法增加了图结构模型的灵活性，使其更具有通用性，可以适应各种数据样本。提出了一阶和二阶信息同时建模的两流框架，该框架的识别精度有了显著提高。在NTU-RGBD和Kinetics-Skeleton这两个大型数据集上进行的大量实验表明，我们的模型的性能远远超过了目前的水平。</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>然而，将骨骼数据表示为向量序列或二维网格并不能完全表达相关关节之间的依赖关系。在非欧几里得空间中，骨骼被自然构造成一个图形，其关节是顶点，它们在人体中的自然连接是边缘。</p>
+<p><strong>ST-GCN</strong>有三点不足。</p>
+<p>我们的方法解决了这些问题。它对两类图数据进行参数化处理，利用模型的卷积参数对两类图数据的结构进行训练和更新。一种类型是全局图，它表示所有数据的通用模式。另一种类型是个体图，它表示每个数据的唯一模式。</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.chenjf.cf/2019/12/05/paper-note1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -278,11 +399,21 @@
                 
               
 
-              <time title="创建时间：2019-12-05 14:19:52 / 修改时间：14:40:57" itemprop="dateCreated datePublished" datetime="2019-12-05T14:19:52+08:00">2019-12-05</time>
+              <time title="创建时间：2019-12-05 14:19:52" itemprop="dateCreated datePublished" datetime="2019-12-05T14:19:52+08:00">2019-12-05</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-07 17:44:39" itemprop="dateModified" datetime="2019-12-07T17:44:39+08:00">2019-12-07</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -331,7 +462,12 @@
 
       
           
-            <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract:"></a><strong>Abstract:</strong></h3>
+            <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract:"></a><strong>Abstract:</strong></h3><p>我们描述了<code>SOCKEYE</code>,一个用于神经系统机器翻译(<code>NMT</code>)的开源序列到序列工具箱。<code>SOCKEYE</code>是一个用于训练和应用模型的可生产的框架，也是一个供研究人员使用的实验平台。该工具包使用Python编写并构建在<code>MXNET</code>上，为三种最著名的编解码器架构提供可伸缩的培训和推理: <code>attention RNN</code>，<code>self-attentional transformers</code>，<code>fully convolutional networks</code>。<code>SOCKEYE</code>还支持广泛的优化器、规范化和正则化技术，以及来自当前<code>NMT</code>文献的推断改进。用户可以很容易地运行标准的培训配方，探索不同的模型设置，并合并新的想法。在这篇文章中，我们突出了<code>SOCKEYE</code>的特点，并在2017年机器翻译会议(<code>WMT</code>)的两个语言弧线上，将它与其他<code>NMT</code>工具包进行了对比：English–German and Latvian–English. 我们报告了所有三个架构的竞争性<strong><code>BLEU</code></strong>分数，包括<code>SOCKEYE</code>的<code>transformer</code>实现的整体最佳分数。为了便于进一步比较，我们发布我们实验中使用的所有系统输出和训练脚本。</p>
+<h3 id="Introduce"><a href="#Introduce" class="headerlink" title="Introduce"></a>Introduce</h3><p>系统实现了三个主流的模型：<code>attentional recurrent neural networks</code>, <code>self-attentional transformers</code>, and <code>fully convolutional networks</code>.  这些实现受到广泛的、不断更新的特性的支持，这些特性反映了最新文献中的最佳思想。</p>
+<p>由<code>θ参数化的模型</code>由一个编码器和一个解码器部分组成，它们随模型的架构而变化。</p>
+<h4 id="注意力RNN"><a href="#注意力RNN" class="headerlink" title="注意力RNN"></a>注意力RNN</h4><p><em>following Bahdanau et al. [2014] and Luong et al. [2015]</em></p>
+<p><strong>Encoder</strong></p>
+
           
         
       
@@ -408,7 +544,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-12-05 14:42:19" itemprop="dateModified" datetime="2019-12-05T14:42:19+08:00">2019-12-05</time>
+                <time title="修改时间：2019-12-05 15:12:10" itemprop="dateModified" datetime="2019-12-05T15:12:10+08:00">2019-12-05</time>
               </span>
             
           
@@ -821,7 +957,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-11-27 17:00:07" itemprop="dateModified" datetime="2019-11-27T17:00:07+08:00">2019-11-27</time>
+                <time title="修改时间：2019-12-05 15:52:19" itemprop="dateModified" datetime="2019-12-05T15:52:19+08:00">2019-12-05</time>
               </span>
             
           
@@ -1447,143 +1583,12 @@
   </article>
 
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.chenjf.cf/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jfchen">
-      <meta itemprop="description" content="fighing gank">
-      <meta itemprop="image" content="/images/timg.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jfchen's blog">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" class="post-title-link" itemprop="url">Conda 安装命令大全</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-11-18 18:33:48" itemprop="dateCreated datePublished" datetime="2019-11-18T18:33:48+08:00">2019-11-18</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-11-20 21:55:19" itemprop="dateModified" datetime="2019-11-20T21:55:19+08:00">2019-11-20</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%8C%87%E4%BB%A4/" itemprop="url" rel="index"><span itemprop="name">指令</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-  
-  <span class="post-meta-item">
-    
-    <span class="post-meta-item-icon">
-      <i class="fa fa-comment-o"></i>
-    </span>
-    
-      <span class="post-meta-item-text">评论数：</span>
-    
-  
-    <a href="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-          <br>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Linux命令：经验总结"><a href="#Linux命令：经验总结" class="headerlink" title="Linux命令：经验总结"></a>Linux命令：经验总结</h2><h3 id="版本查看"><a href="#版本查看" class="headerlink" title="版本查看"></a>版本查看</h3>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/11/18/Conda-%E5%AE%89%E8%A3%85%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class=&quot;fa fa-angle-right&quot; aria-label=&quot;下一页&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
 
 
           </div>
@@ -1618,7 +1623,7 @@
         
           <a href="/archives">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
